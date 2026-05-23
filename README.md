@@ -1,4 +1,4 @@
-# FarmLink UG 🌱
+# Farmer Hub UG 🌱
 
 **Offline-First Mobile Platform Bridging the Rural Agriculture Extension Gap in East Africa**
 
