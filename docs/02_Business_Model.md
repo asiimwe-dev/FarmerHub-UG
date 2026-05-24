@@ -461,6 +461,10 @@ Year 5: $10M+
 
 **✅ Business model validates FarmCom Core addresses real market needs with sustainable pricing.**
 
-**📊 For technical roadmap, see [ROADMAP.md](./ROADMAP.md)**
+**📊 For technical roadmap, see [10_Product_Roadmap.md](./10_Product_Roadmap.md)**
 
-**🎯 For market overview, see [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md)**
+**🎯 For market overview, see [01_Project_Overview.md](./01_Project_Overview.md)**
+
+---
+
+**Next: [03 Architecture Blueprint](./03_Architecture_Blueprint.md)**

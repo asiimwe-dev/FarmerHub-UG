@@ -32,8 +32,8 @@ For experienced developers with Flutter already installed:
 
 ```bash
 # Clone repository
-git clone https://github.com/asiimwe-dev/FarmLink-UG.git
-cd FarmLink-UG/frontend
+git clone https://github.com/asiimwe-dev/FarmerHub-UG.git
+cd FarmerHub-UG/frontend
 
 # Install dependencies
 flutter pub get
@@ -241,25 +241,31 @@ flutter doctor
 
 ```bash
 # Clone from GitHub
-git clone https://github.com/asiimwe-dev/FarmLink-UG.git
-cd FarmLink-UG/frontend
-
-# Verify you're in the correct directory
-ls -la
-# Should show: pubspec.yaml, lib/, test/, etc.
+git clone https://github.com/asiimwe-dev/FarmerHub-UG.git
+cd FarmerHub-UG
 ```
 
 ### Install Dependencies
 
+#### 📱 Frontend (Flutter)
 ```bash
-# Install all Pub dependencies
+cd frontend
 flutter pub get
 
-# Upgrade dependencies to latest compatible versions (optional)
-flutter pub upgrade
+# Verify static analysis
+flutter analyze
+```
 
-# Check for issues
-flutter pub audit
+#### 🛠️ Backend (FastAPI)
+```bash
+cd ../backend
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
 ```
 
 ### Analyze Project
@@ -572,7 +578,7 @@ flutter build apk -v
 - **Official Documentation**: [Flutter.dev](https://flutter.dev/docs)
 - **Dart Documentation**: [Dart.dev](https://dart.dev)
 - **Stack Overflow**: Tag `flutter`
-- **GitHub Issues**: [FarmLink-UG Issues](https://github.com/asiimwe-dev/FarmLink-UG/issues)
+- **GitHub Issues**: [FarmerHub-UG Issues](https://github.com/asiimwe-dev/FarmerHub-UG/issues)
 
 ### Common Documentation Links
 
@@ -583,7 +589,7 @@ flutter build apk -v
 
 ### Ask for Help
 
-1. Check existing [GitHub Issues](https://github.com/asiimwe-dev/FarmLink-UG/issues)
+1. Check existing [GitHub Issues](https://github.com/asiimwe-dev/FarmerHub-UG/issues)
 2. Search Stack Overflow and Flutter docs
 3. Post in GitHub Discussions
 4. Contact project maintainers
@@ -592,4 +598,6 @@ flutter build apk -v
 
 **✅ Setup Complete!** You're now ready to start developing FarmCom Core. 🎉
 
-Next: Read [ARCHITECTURE.md](./ARCHITECTURE.md) to understand the codebase structure.
+---
+
+**Next: [05 Backend Specification](./05_Backend_Specification.md)**

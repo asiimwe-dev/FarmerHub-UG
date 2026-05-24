@@ -228,6 +228,10 @@ class FieldRepositoryImpl implements FieldRepository {
 
 ## 📁 Directory Structure
 
+The project is organized into two primary service layers: **Frontend (Mobile)** and **Backend (API)**.
+
+### 📱 Frontend (lib/)
+
 ```
 frontend/lib/
 ├── main.dart                      # App entry point
@@ -244,50 +248,39 @@ frontend/lib/
 │   │   └── app_exception.dart    # Exception hierarchy
 │   ├── validators/
 │   │   ├── field_validators.dart  # Field validation rules
-│   │   ├── crop_validators.dart   # Crop validation rules
-│   │   └── measurement_validators.dart
-│   ├── extensions/
-│   │   ├── string_extensions.dart # String utilities
-│   │   ├── date_time_extensions.dart
-│   │   └── num_extensions.dart   # Unit converters (ha↔ac, kg↔lbs)
+│   │   └── ...
 │   ├── network/
 │   │   ├── dio_client.dart       # HTTP client configuration
 │   │   └── api_response.dart     # Response wrapper
 │   ├── di/
 │   │   └── providers.dart        # Riverpod providers
-│   ├── mappers/
-│   │   └── dto_entity_mapper.dart # DTO ↔ Entity conversion
-│   ├── theme/
-│   │   ├── app_colors.dart       # Material 3 colors
-│   │   ├── app_theme.dart        # Theme configuration
-│   │   └── app_typography.dart   # Typography scales
-│   ├── widgets/
-│   │   ├── app_scaffold.dart     # Custom scaffold
-│   │   ├── loading_state.dart    # Loading UI
-│   │   └── error_state.dart      # Error UI
-│   └── utils/
-│       └── logger.dart           # Logging configuration
-├── modules/                       # Feature modules
-│   ├── auth/
-│   │   ├── domain/
-│   │   │   ├── entities/
-│   │   │   │   └── user_entity.dart
-│   │   │   ├── repositories/
-│   │   │   │   └── auth_repository.dart
-│   │   │   └── exceptions/
-│   │   │       └── auth_exceptions.dart
-│   │   ├── data/
-│   │   │   ├── datasources/
-│   │   │   │   ├── auth_remote_data_source.dart
-│   │   │   │   └── auth_local_data_source.dart
-│   │   │   ├── repositories/
-│   │   │   │   └── auth_repository_impl.dart
-│   │   │   └── models/
-│   │   │       └── user_dto.dart
-│   │   ├── presentation/
-│   │   │   ├── pages/
-│   │   │   │   └── login_page.dart
-│   │   │   ├── widgets/
+│   └── ...
+└── modules/                       # Feature modules
+    ├── auth/                      # Authentication logic
+    ├── field_capture/             # GPS & plot capture
+    ├── traceability/              # Batch tracking
+    └── sync/                      # Offline sync gateway
+```
+
+### 🛠️ Backend (app/)
+
+```
+backend/app/
+├── api/                           # API Route handlers
+│   ├── v1/                        # API versioning
+│   │   ├── endpoints/             # Specific feature routes
+│   │   └── api.py                 # Router aggregation
+├── core/                          # Global configuration
+│   ├── config.py                  # Environment variables
+│   └── security.py                # JWT & Auth logic
+├── crud/                          # CRUD operations (SQLAlchemy)
+├── db/                            # Database sessions & PostGIS
+├── models/                        # SQLAlchemy entities
+├── schemas/                       # Pydantic DTOs
+├── services/                      # Business logic & ML engine
+└── tasks/                         # Celery background workers
+```
+
 │   │   │   │   └── login_form.dart
 │   │   │   └── auth_providers.dart
 │   │   └── auth_module.dart      # Module configuration
@@ -750,4 +743,7 @@ final name = ref.watch(formProvider.select((f) => f.name));
 
 **✅ Architecture Complete!** This structure scales from MVP to production. 🚀
 
-Next: Check [QUICK_REFERENCE.md](./QUICK_REFERENCE.md) for common development tasks.
+---
+
+**Next: [04 Development Setup](./04_Development_Setup.md)**
+

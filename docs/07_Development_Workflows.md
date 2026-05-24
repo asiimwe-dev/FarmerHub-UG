@@ -38,6 +38,8 @@ We are dedicated to providing a welcoming, inclusive, and professional community
 - Technical merit is the basis for all decisions
 - Collaboration and learning are encouraged
 
+**See also: [08 Code of Conduct](./08_Code_Of_Conduct.md)**
+
 ### Expected Behavior
 
 #### ✅ DO:
@@ -70,7 +72,7 @@ Violations of this code of conduct may result in:
 
 **Report Violations**: Contact project maintainers privately via:
 - GitHub: [@asiimwe-dev](https://github.com/asiimwe-dev)
-- Email: [maintainers' contact]
+- Email: gilbert.asiimwe.dev@gmail.com
 - All reports are **confidential** and investigated promptly
 
 ---
@@ -81,14 +83,14 @@ Violations of this code of conduct may result in:
 
 ```bash
 # 1. Fork repository on GitHub
-# (Click "Fork" button on https://github.com/asiimwe-dev/FarmLink-UG)
+# (Click "Fork" button on https://github.com/asiimwe-dev/FarmerHub-UG)
 
 # 2. Clone your fork
-git clone https://github.com/YOUR_USERNAME/FarmLink-UG.git
-cd FarmLink-UG/frontend
+git clone https://github.com/YOUR_USERNAME/FarmerHub-UG.git
+cd FarmerHub-UG/frontend
 
 # 3. Add upstream remote
-git remote add upstream https://github.com/asiimwe-dev/FarmLink-UG.git
+git remote add upstream https://github.com/asiimwe-dev/FarmerHub-UG.git
 ```
 
 ### Step 2: Create Feature Branch
@@ -107,6 +109,7 @@ git checkout -b feature/your-feature-name upstream/main
 
 ### Step 3: Set Up Development Environment
 
+#### For Frontend (Mobile)
 ```bash
 # Navigate to frontend directory
 cd frontend
@@ -120,6 +123,22 @@ flutter analyze  # Should show 0 issues
 flutter test     # All tests should pass
 ```
 
+#### For Backend (API)
+```bash
+# Navigate to backend directory
+cd backend
+
+# Set up environment
+python -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Verify setup
+pytest           # All tests should pass
+```
+
 ---
 
 ## ✅ Before You Start
@@ -127,7 +146,7 @@ flutter test     # All tests should pass
 ### Check These First
 
 1. **Browse Existing Issues**
-   - Visit [GitHub Issues](https://github.com/asiimwe-dev/FarmLink-UG/issues)
+   - Visit [GitHub Issues](https://github.com/asiimwe-dev/FarmerHub-UG/issues)
    - Is your feature already being worked on?
    - Are there related discussions?
 
@@ -605,8 +624,8 @@ Paste relevant error logs or stack trace
 
 ### Resources
 
-- **Issues**: [GitHub Issues](https://github.com/asiimwe-dev/FarmLink-UG/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/asiimwe-dev/FarmLink-UG/discussions)
+- **Issues**: [GitHub Issues](https://github.com/asiimwe-dev/FarmerHub-UG/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/asiimwe-dev/FarmerHub-UG/discussions)
 - **Documentation**: [docs/](./../../docs)
 
 ### Ask Questions

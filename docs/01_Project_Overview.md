@@ -1,4 +1,4 @@
-# 🌾 Farmer Hub UG - Project Overview
+# 01 Project Overview
 
 **FarmCom Core: B2B Agri-Intelligence Platform for East African Agriculture**
 
@@ -89,32 +89,30 @@ Create a world where every farmer, cooperative, and agribusiness in Uganda and E
 
 ### What is FarmCom Core?
 
-FarmCom Core is an offline-first, B2B agri-intelligence platform that enables:
+FarmCom Core is an offline-first, B2B agri-intelligence platform comprising:
 
-1. **Field Capture** — Farmers record plot data (crop type, area, inputs) with offline functionality
-2. **Yield Forecasting** — AI-powered predictions based on historical patterns
-3. **Traceability** — End-to-end tracking from farm to export
-4. **Cooperative Aggregation** — Connect member data for cooperative-level insights
-5. **Background Sync** — Automatic data synchronization when connected
+1. **Flutter Mobile Application** — Enabling farmers to record plot data (crop type, area, inputs) with robust offline functionality.
+2. **FastAPI Backend Intelligence Layer** — AI-powered predictions based on historical patterns, batch traceability, and cooperative aggregation.
+3. **Synchronized Ecosystem** — Seamless data flow between the rural field and centralized intelligence.
 
 ### How It Works
 
 ```
-Farmer Records Data → Offline Storage → Auto-Sync → Cloud
-              (Offline-First)           (When Online)
-                                              ↓
-                                    Aggregation & Analytics
-                                              ↓
-                                    Insights for Cooperatives,
-                                    Exporters, Lenders
+[Mobile Frontend]                    [Cloud Backend]
+Farmer Records Data  ──(Offline)──>  Auto-Sync  ───> FastAPI Intelligence
+              (SQLite)               (Online)           (PostGIS + ML)
+                                                           │
+                                                           ▼
+                                               Insights for Cooperatives,
+                                               Exporters, and Lenders
 ```
 
 ### Architecture Highlights
 
-- **Offline-First** — Complete functionality without internet
-- **Clean Architecture** — Scalable, testable, maintainable code
-- **Minimal Dependencies** — Fast builds, easy deployment
-- **Enterprise-Grade** — Production-ready patterns and security
+- **Full-Stack Synergy** — High-performance Flutter frontend coupled with an asynchronous Python/FastAPI backend.
+- **Offline-First Resilience** — Complete frontend functionality maintained without internet connectivity.
+- **Geospatial & ML Core** — Backend optimized for complex boundary mapping and yield forecasting.
+- **Enterprise-Grade** — Clean architecture on both ends for maximum scalability and maintainability.
 
 ---
 
@@ -300,15 +298,15 @@ Farmer Records Data → Offline Storage → Auto-Sync → Cloud
 
 ## 📱 Technology Positioning
 
-### Target Platform
-- **Primary**: Android (90% smartphone market in Uganda)
-- **Secondary**: iOS (urban professionals)
-- **Future**: Web dashboard
+### Target Platforms
+- **Frontend**: Android (90% market in Uganda), iOS (urban professionals)
+- **Backend**: FastAPI (High-performance API layer)
+- **Data Storage**: PostgreSQL/PostGIS (Geospatial intelligence)
 
 ### Technology Stack Advantages
 - **Flutter** — Cross-platform, fast time-to-market, excellent offline support
+- **FastAPI** — High-performance, modern Python framework for data-intensive apps
 - **Riverpod** — Scalable state management for complex features
-- **Local SQLite** — Offline-first, no infrastructure needed
 - **Background Sync** — Automatic data synchronization
 
 ### Data Residency & Privacy
@@ -385,7 +383,7 @@ Farmer Records Data → Offline Storage → Auto-Sync → Cloud
 
 ## 🛣️ Development Roadmap
 
-**See [ROADMAP.md](./ROADMAP.md) for detailed phase breakdown and timeline.**
+**See [09_Product_Roadmap.md](./09_Product_Roadmap.md) for detailed phase breakdown and timeline.**
 
 ---
 
@@ -404,8 +402,10 @@ Farmer Records Data → Offline Storage → Auto-Sync → Cloud
 
 ---
 
-**✅ For technical details, see [ARCHITECTURE.md](./ARCHITECTURE.md)**
+**✅ For business model, see [02_Business_Model.md](./02_Business_Model.md)**
 
-**💼 For business model, see [BUSINESS_MODEL.md](./BUSINESS_MODEL.md)**
+**📅 For technical roadmap, see [10_Product_Roadmap.md](./10_Product_Roadmap.md)**
 
-**📅 For timeline, see [ROADMAP.md](./ROADMAP.md)**
+---
+
+**Next: [02 Business Model](./02_Business_Model.md)**

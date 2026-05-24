@@ -1,4 +1,4 @@
-# 🛣️ FarmCom Core - Development Roadmap
+# 10 Product Roadmap
 
 **2026-2031 Product Development Timeline and Feature Priorities**
 
@@ -499,6 +499,10 @@ Transform FarmCom Core from a mobile field capture tool into a comprehensive agr
 
 **✅ Roadmap provides clear path from MVP to regional platform.**
 
-**📊 For business metrics, see [BUSINESS_MODEL.md](./BUSINESS_MODEL.md)**
+**📊 For business metrics, see [02_Business_Model.md](./02_Business_Model.md)**
 
-**🎯 For feature details, see [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md)**
+**🎯 For feature details, see [01_Project_Overview.md](./01_Project_Overview.md)**
+
+---
+
+**Next: [11 Technical Index](./11_Technical_Index.md)**
