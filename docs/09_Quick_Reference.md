@@ -1,8 +1,8 @@
 # 09 Quick Reference
 
-**CLI Shortcuts, Common Tasks, and Troubleshooting for FarmCom Core**
+**CLI Shortcuts, Common Tasks, and Troubleshooting for FarmerHub UG**
 
-> ⚡ Quick reference guide for developers to find common commands, shortcuts, and troubleshooting steps for the FarmCom Core project.
+> ⚡ Quick reference guide for developers to find common commands, shortcuts, and troubleshooting steps for the FarmerHub UG project.
 
 ---
 

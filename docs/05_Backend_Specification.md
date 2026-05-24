@@ -1,8 +1,8 @@
 # 05 Backend Specification
 
-**Core Engineering Blueprint for the FarmCom Core Backend Infrastructure**
+**Core Engineering Blueprint for the FarmerHub Core Backend Infrastructure**
 
-> 🛠️ This document outlines the technical specification for the FarmCom Core backend. While the project is currently in the frontend-focused MVP phase, this specification defines the target architecture, technology stack, and implementation plan for the centralized intelligence layer.
+> 🛠️ This document outlines the technical specification for the FarmerHub Core backend. While the project is currently in the frontend-focused MVP phase, this specification defines the target architecture, technology stack, and implementation plan for the centralized intelligence layer.
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## 🏛️ Architectural Overview
 
-The FarmCom Core backend is designed as a high-performance, asynchronous REST API using a **Micro-Service Ready Monolith** approach. It prioritizes data integrity for offline-sync operations and provides the heavy-lifting computational power for yield forecasting.
+The FarmerHub Core backend is designed as a high-performance, asynchronous REST API using a **Micro-Service Ready Monolith** approach. It prioritizes data integrity for offline-sync operations and provides the heavy-lifting computational power for yield forecasting.
 
 ### Key Architectural Pillars
 

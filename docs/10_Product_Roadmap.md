@@ -2,7 +2,7 @@
 
 **2026-2031 Product Development Timeline and Feature Priorities**
 
-> 📅 Strategic roadmap showing phased feature development, priorities, and milestones for FarmCom Core evolution.
+> 📅 Strategic roadmap showing phased feature development, priorities, and milestones for FarmerHub UG evolution.
 
 **Last Updated**: May 2026 | **Status**: ✅ Active | **Audience**: Developers, Product Team, Stakeholders
 
@@ -27,7 +27,7 @@
 
 ### Vision
 
-Transform FarmCom Core from a mobile field capture tool into a comprehensive agri-intelligence ecosystem connecting farmers, cooperatives, processors, exporters, and lenders across East Africa.
+Transform FarmerHub UG from a mobile field capture tool into a comprehensive agri-intelligence ecosystem connecting farmers, cooperatives, processors, exporters, and lenders across East Africa.
 
 ### Phase Breakdown
 

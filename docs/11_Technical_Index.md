@@ -2,7 +2,7 @@
 
 **Comprehensive Documentation Navigation Hub for Farmer Hub UG**
 
-> 📚 Welcome to the FarmCom Core technical index. This document serves as the central jumping-off point for all project documentation, organized by phase and functional area.
+> 📚 Welcome to the FarmerHub UG technical index. This document serves as the central jumping-off point for all project documentation, organized by phase and functional area.
 
 ---
 

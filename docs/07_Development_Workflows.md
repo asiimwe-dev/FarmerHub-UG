@@ -1,8 +1,8 @@
 # 🤝 Contributing to Farmer Hub UG
 
-**Professional Contribution Guidelines for FarmCom Core Project**
+**Professional Contribution Guidelines for FarmerHub UG Project**
 
-> 📖 Complete guide for contributing code, reporting issues, and participating in the FarmCom Core community. Learn our development workflow, code standards, and review process.
+> 📖 Complete guide for contributing code, reporting issues, and participating in the FarmerHub UG community. Learn our development workflow, code standards, and review process.
 
 **Last Updated**: May 2026 | **Status**: ✅ Active | **Audience**: Contributors, Developers
 
@@ -608,7 +608,7 @@ Paste relevant error logs or stack trace
 
 ## 🚀 Release & Versioning Policy
 
-FarmCom Core follows a strict versioning and release schedule to ensure platform stability for our institutional partners.
+FarmerHub UG follows a strict versioning and release schedule to ensure platform stability for our institutional partners.
 
 ### 1. Semantic Versioning (SemVer)
 We adhere to `vMAJOR.MINOR.PATCH` formatting:
@@ -668,4 +668,4 @@ We recognize and celebrate all contributions! Contributors are listed in:
 
 ---
 
-**🎉 Thanks for contributing!** Your work helps FarmCom Core serve farmers across East Africa. 🌾
+**🎉 Thanks for contributing!** Your work helps FarmerHub UG serve farmers across East Africa. 🌾

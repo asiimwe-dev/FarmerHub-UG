@@ -1,8 +1,8 @@
 # 🚀 Farmer Hub UG - Development Setup Guide
 
-**Professional Development Environment Configuration for FarmCom Core**
+**Professional Development Environment Configuration for FarmerHub UG**
 
-> 📖 Complete guide to setting up your development environment, installing dependencies, and running the FarmCom Core mobile application for the first time.
+> 📖 Complete guide to setting up your development environment, installing dependencies, and running the FarmerHub UG mobile application for the first time.
 
 **Last Updated**: May 2026 | **Status**: ✅ Production Ready | **Audience**: Developers, Contributors
 
@@ -596,7 +596,7 @@ flutter build apk -v
 
 ---
 
-**✅ Setup Complete!** You're now ready to start developing FarmCom Core. 🎉
+**✅ Setup Complete!** You're now ready to start developing FarmerHub UG. 🎉
 
 ---
 

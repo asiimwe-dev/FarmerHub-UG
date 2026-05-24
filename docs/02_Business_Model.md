@@ -231,7 +231,7 @@ FarmerHub UG uses a **multi-segment SaaS model** with:
 
 ## 🏛️ Institutional Positioning
 
-FarmerHub UG Core is not just a tool; it is a **B2B2C Trust Infrastructure**.
+FarmerHub Core is not just a tool; it is a **B2B2C Trust Infrastructure**.
 
 ### 1. The "Single Source of Truth"
 In the fragmented East African market, we position ourselves as the definitive source for field-level data. By providing a common data standard, we enable disparate entities (e.g., a Cooperative in Mbale and a Bank in Kampala) to collaborate with zero data friction.
@@ -475,7 +475,7 @@ Year 5: $10M+
 
 ---
 
-**✅ Business model validates FarmerHub UG Core addresses real market needs with sustainable pricing.**
+**✅ Business model validates FarmerHub Core addresses real market needs with sustainable pricing.**
 
 **📊 For technical roadmap, see [10_Product_Roadmap.md](./10_Product_Roadmap.md)**
 

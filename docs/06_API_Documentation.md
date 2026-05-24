@@ -1,8 +1,8 @@
 # 06 API Documentation
 
-**Technical Reference for the FarmCom Core REST API**
+**Technical Reference for the FarmerHub Core REST API**
 
-> 🔌 This document provides the high-level API specification for the FarmCom Core backend. It serves as the contract between the Flutter frontend and the FastAPI backend.
+> 🔌 This document provides the high-level API specification for the FarmerHub Core backend. It serves as the contract between the Flutter frontend and the FastAPI backend.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ## 📌 Introduction
 
-The FarmCom Core API is a RESTful service that communicates using JSON. It is designed to support the **Offline-First** nature of the mobile application by providing efficient batch sync endpoints and idempotent operations.
+The FarmerHub Core API is a RESTful service that communicates using JSON. It is designed to support the **Offline-First** nature of the mobile application by providing efficient batch sync endpoints and idempotent operations.
 
 **Base URL**: `https://api.farmerhub.ug/v1`
 

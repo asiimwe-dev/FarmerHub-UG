@@ -1,8 +1,8 @@
 # 🏗️ Farmer Hub UG - Codebase Architecture Guide
 
-**Professional Clean Architecture for FarmCom Core Flutter Application**
+**Professional Clean Architecture for FarmerHub Core Flutter Application**
 
-> 📖 Complete reference for the codebase structure, design patterns, layer separation, and development guidelines. Understand how FarmCom Core is organized for scalability, testability, and maintainability.
+> 📖 Complete reference for the codebase structure, design patterns, layer separation, and development guidelines. Understand how FarmerHub Core is organized for scalability, testability, and maintainability.
 
 **Last Updated**: May 2026 | **Status**: ✅ Production Ready | **Audience**: Developers, Architects
 
@@ -29,7 +29,7 @@
 
 ## 🎯 Architecture Overview
 
-FarmCom Core uses **Clean Architecture** with strict layer separation to enable:
+FarmerHub Core uses **Clean Architecture** with strict layer separation to enable:
 
 - ✅ **Testability** — Each layer independently testable with mocks
 - ✅ **Scalability** — Features isolated in modules, easy to extend
@@ -724,7 +724,7 @@ Future<T> retryAsync<T>(
 
 ## 🛡️ Security & Privacy Posture
 
-FarmCom Core handles sensitive agricultural and geospatial data. Our security model is built on **Zero Trust** principles.
+FarmerHub Core handles sensitive agricultural and geospatial data. Our security model is built on **Zero Trust** principles.
 
 ### 1. Data Encryption
 *   **At Rest (On-Device)**: SQLite databases are encrypted using **SQLCipher** (256-bit AES) to prevent unauthorized access if a device is stolen.
