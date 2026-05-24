@@ -67,11 +67,11 @@ Android Studio or VSCode
 ```bash
 # Fork the repository on GitHub
 # Then clone your fork
-git clone https://github.com/YOUR_USERNAME/FarmLink-UG.git
+git clone https://github.com/YOUR_USERNAME/FarmerHub-UG.git
 cd FarmLink UG
 
 # Add upstream remote for syncing
-git remote add upstream https://github.com/asiimwe-dev/FarmLink-UG.git
+git remote add upstream https://github.com/asiimwe-dev/FarmerHub-UG.git
 ```
 
 ### Step 2: Verify Setup
@@ -996,4 +996,4 @@ All contributors will be recognized in:
 **Questions?** Create an issue or start a discussion. We're here to help! 🚀
 
 **Last Updated:** April 2026  
-**Maintained By:** FarmLink UG Development Team
+**Maintained By:** FarmerHub UG Development Team
