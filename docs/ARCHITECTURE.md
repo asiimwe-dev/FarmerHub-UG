@@ -1,44 +1,332 @@
-# Farmer Hub UG - Professional Codebase Architecture
+# 🏗️ Farmer Hub UG - Codebase Architecture Guide
 
-## Overview
-This is a **professional-grade, production-ready Flutter codebase** for FarmCom Core, an offline-first agri-intelligence platform for cooperatives, exporters, and field teams.
+**Professional Clean Architecture for FarmCom Core Flutter Application**
 
-## Core Design Principles
-- **Clean Architecture** - Strict separation between domain (business logic), data (API/local storage), and presentation (UI)
-- **Offline-First** - All data is stored locally; sync service manages cloud synchronization
-- **Lean & Focused** - Only capabilities needed for agri-intelligence; no cruft from previous features
-- **Enterprise Patterns** - Proper error handling, validation, dependency injection, logging
+> 📖 Complete reference for the codebase structure, design patterns, layer separation, and development guidelines. Understand how FarmCom Core is organized for scalability, testability, and maintainability.
+
+**Last Updated**: May 2026 | **Status**: ✅ Production Ready | **Audience**: Developers, Architects
 
 ---
 
-## Directory Structure
+## 📋 Table of Contents
 
-### 📁 `config/` - Application Configuration
-Global app settings that vary by environment (dev/staging/prod).
+1. [Architecture Overview](#architecture-overview)
+2. [Core Design Principles](#core-design-principles)
+3. [Clean Architecture Layers](#clean-architecture-layers)
+4. [Directory Structure](#directory-structure)
+5. [Core Infrastructure](#core-infrastructure)
+6. [Feature Modules](#feature-modules)
+7. [Dependency Injection](#dependency-injection)
+8. [Error Handling](#error-handling)
+9. [State Management](#state-management)
+10. [Testing Strategy](#testing-strategy)
+11. [Offline-First Architecture](#offline-first-architecture)
+12. [Best Practices](#best-practices)
+13. [Common Patterns](#common-patterns)
+14. [Troubleshooting](#troubleshooting)
+
+---
+
+## 🎯 Architecture Overview
+
+FarmCom Core uses **Clean Architecture** with strict layer separation to enable:
+
+- ✅ **Testability** — Each layer independently testable with mocks
+- ✅ **Scalability** — Features isolated in modules, easy to extend
+- ✅ **Maintainability** — Clear responsibilities, predictable code location
+- ✅ **Reusability** — Shared infrastructure available to all features
+- ✅ **Enterprise-Grade** — Professional patterns used in production apps
+
+### Architecture Layers
 
 ```
-config/
-├── app_config.dart       # Environment-specific URLs, debug flags
-└── constants.dart        # Timeouts, validation rules, field constraints, sync settings
+┌────────────────────────────────┐
+│     Presentation Layer         │  ← UI, Pages, Widgets
+│   (app/, modules/*/presentation) │
+├────────────────────────────────┤
+│     Application Layer          │  ← Use Cases, State Management
+│   (modules/*/application)      │
+├────────────────────────────────┤
+│     Domain Layer               │  ← Business Logic, Entities
+│   (modules/*/domain)           │
+├────────────────────────────────┤
+│     Infrastructure Layer       │  ← API Clients, Databases
+│   (core/, modules/*/infrastructure) │
+└────────────────────────────────┘
 ```
 
-**Usage**: Import when you need API endpoints, app strings, validation rules.
+---
+
+## 📐 Core Design Principles
+
+### 1. **Dependency Inversion**
+- Dependencies point **inward** (toward domain layer)
+- Domain layer has **no external dependencies**
+- Infrastructure implements domain interfaces
+
 ```dart
-import 'package:farmer_hub_ug/config/constants.dart';
-// Use: AppConstants.maxFieldAreaHectares, AppConstants.networkTimeout
+// ❌ Wrong: Domain depends on external library
+class FieldEntity {
+  final http.Client client; // BAD: Infrastructure leak
+}
+
+// ✅ Correct: Domain defines interface
+class FieldEntity {
+  final FieldRepository repository; // Domain interface
+}
+```
+
+### 2. **Single Responsibility**
+- Each class has **one reason to change**
+- UI widgets don't fetch data
+- Repositories don't format UI strings
+
+### 3. **Open/Closed Principle**
+- Open for **extension**, closed for **modification**
+- Add features without changing existing code
+- Use interfaces for flexibility
+
+### 4. **Interface Segregation**
+- Small, focused interfaces
+- Clients don't depend on methods they don't use
+
+### 5. **Offline-First**
+- All data stored **locally first**
+- Background sync manages cloud synchronization
+- App remains functional without internet
+
+---
+
+## 🏛️ Clean Architecture Layers
+
+### Presentation Layer (UI)
+
+**Responsibility**: Display data, collect user input, handle navigation
+
+**Location**: `lib/app/`, `lib/modules/*/presentation/`
+
+**Contains**:
+- **Pages** — Full-screen UI components
+- **Widgets** — Reusable UI components
+- **State Management** — Riverpod providers
+- **Themes** — Colors, typography, styles
+
+```dart
+// Example: Page with Riverpod state management
+class FieldCapturePage extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final fieldState = ref.watch(fieldProvider);
+    return fieldState.when(
+      data: (field) => FieldCaptureForm(field: field),
+      loading: () => LoadingWidget(),
+      error: (err, st) => ErrorWidget(error: err),
+    );
+  }
+}
+```
+
+### Application Layer (Use Cases)
+
+**Responsibility**: Orchestrate business logic, manage state transitions
+
+**Location**: `lib/modules/*/application/`
+
+**Contains**:
+- **Use Case Providers** — Riverpod providers exposing application logic
+- **State Notifiers** — Complex state management logic
+- **Mappers** — Convert between DTOs and entities
+- **Validators** — Business rule validation
+
+```dart
+// Example: Use case provider
+final saveFieldProvider = FutureProvider<void>((ref) async {
+  final fieldRepository = ref.watch(fieldRepositoryProvider);
+  final field = ref.watch(fieldFormProvider);
+  
+  // Validate
+  if (!fieldValidator.isValid(field)) {
+    throw ValidationException('Invalid field');
+  }
+  
+  // Execute
+  await fieldRepository.saveField(field);
+});
+```
+
+### Domain Layer (Business Logic)
+
+**Responsibility**: Define business rules, entities, and repository interfaces
+
+**Location**: `lib/modules/*/domain/`
+
+**Contains**:
+- **Entities** — Core business objects
+- **Repositories** — Interfaces for data access
+- **Value Objects** — Strongly-typed values
+- **Exceptions** — Domain-specific errors
+
+```dart
+// Example: Entity (immutable, business logic)
+class FieldEntity extends Equatable {
+  final String id;
+  final String cropType;
+  final double areaHectares;
+  
+  // Business logic
+  bool isSufficientSize() => areaHectares >= 0.01;
+  
+  @override
+  List<Object?> get props => [id, cropType, areaHectares];
+}
+
+// Example: Repository interface
+abstract class FieldRepository {
+  Future<FieldEntity> getField(String id);
+  Future<void> saveField(FieldEntity field);
+  Future<List<FieldEntity>> listFields();
+}
+```
+
+### Infrastructure Layer (External Systems)
+
+**Responsibility**: Implement external integrations (API, database, location)
+
+**Location**: `lib/core/`, `lib/modules/*/infrastructure/`
+
+**Contains**:
+- **API Clients** — HTTP requests to backend
+- **Local Data Sources** — SQLite, SharedPreferences
+- **Repositories** — Implementation of domain interfaces
+- **DTOs** — Network/database models
+
+```dart
+// Example: Repository implementation
+class FieldRepositoryImpl implements FieldRepository {
+  final FieldRemoteDataSource remote;
+  final FieldLocalDataSource local;
+  
+  @override
+  Future<FieldEntity> getField(String id) async {
+    try {
+      // Try remote first
+      final dto = await remote.getField(id);
+      final entity = FieldDTOMapper.toEntity(dto);
+      // Cache locally
+      await local.cacheField(entity);
+      return entity;
+    } on NetworkException {
+      // Fallback to local
+      final entity = await local.getField(id);
+      return entity;
+    }
+  }
+}
 ```
 
 ---
 
-### 📁 `core/` - Shared Infrastructure
-Cross-cutting concerns used by all modules.
-
-#### `core/exceptions/`
-Centralized error handling hierarchy. Every error in the app is a subclass of `AppException`.
+## 📁 Directory Structure
 
 ```
-exceptions/
-└── app_exception.dart    # AppException (base), NetworkException, ValidationException, OfflineException, SyncException
+frontend/lib/
+├── main.dart                      # App entry point
+├── app/
+│   ├── app.dart                   # Root MaterialApp
+│   ├── bootstrap.dart             # App initialization
+│   ├── router.dart                # GoRouter configuration
+│   └── app_lifecycle.dart         # Lifecycle management
+├── config/
+│   ├── app_config.dart            # Environment config (API URLs, etc.)
+│   └── constants.dart             # App-wide constants
+├── core/                          # Shared infrastructure
+│   ├── exceptions/
+│   │   └── app_exception.dart    # Exception hierarchy
+│   ├── validators/
+│   │   ├── field_validators.dart  # Field validation rules
+│   │   ├── crop_validators.dart   # Crop validation rules
+│   │   └── measurement_validators.dart
+│   ├── extensions/
+│   │   ├── string_extensions.dart # String utilities
+│   │   ├── date_time_extensions.dart
+│   │   └── num_extensions.dart   # Unit converters (ha↔ac, kg↔lbs)
+│   ├── network/
+│   │   ├── dio_client.dart       # HTTP client configuration
+│   │   └── api_response.dart     # Response wrapper
+│   ├── di/
+│   │   └── providers.dart        # Riverpod providers
+│   ├── mappers/
+│   │   └── dto_entity_mapper.dart # DTO ↔ Entity conversion
+│   ├── theme/
+│   │   ├── app_colors.dart       # Material 3 colors
+│   │   ├── app_theme.dart        # Theme configuration
+│   │   └── app_typography.dart   # Typography scales
+│   ├── widgets/
+│   │   ├── app_scaffold.dart     # Custom scaffold
+│   │   ├── loading_state.dart    # Loading UI
+│   │   └── error_state.dart      # Error UI
+│   └── utils/
+│       └── logger.dart           # Logging configuration
+├── modules/                       # Feature modules
+│   ├── auth/
+│   │   ├── domain/
+│   │   │   ├── entities/
+│   │   │   │   └── user_entity.dart
+│   │   │   ├── repositories/
+│   │   │   │   └── auth_repository.dart
+│   │   │   └── exceptions/
+│   │   │       └── auth_exceptions.dart
+│   │   ├── data/
+│   │   │   ├── datasources/
+│   │   │   │   ├── auth_remote_data_source.dart
+│   │   │   │   └── auth_local_data_source.dart
+│   │   │   ├── repositories/
+│   │   │   │   └── auth_repository_impl.dart
+│   │   │   └── models/
+│   │   │       └── user_dto.dart
+│   │   ├── presentation/
+│   │   │   ├── pages/
+│   │   │   │   └── login_page.dart
+│   │   │   ├── widgets/
+│   │   │   │   └── login_form.dart
+│   │   │   └── auth_providers.dart
+│   │   └── auth_module.dart      # Module configuration
+│   │
+│   ├── field_capture/            # Similar structure
+│   ├── traceability/             # Similar structure
+│   ├── forecasts/                # Similar structure
+│   └── sync/                     # Background sync module
+├── test/
+│   └── smoke_test.dart
+└── pubspec.yaml
+```
+
+---
+
+## 🔧 Core Infrastructure
+
+### Exception Handling
+
+**Location**: `lib/core/exceptions/app_exception.dart`
+
+```dart
+// Exception hierarchy
+abstract class AppException implements Exception {
+  final String message;
+  AppException(this.message);
+}
+
+class NetworkException extends AppException {
+  NetworkException(String message) : super(message);
+}
+
+class ValidationException extends AppException {
+  ValidationException(String message) : super(message);
+}
+
+class OfflineException extends AppException {
+  OfflineException(String message) : super(message);
+}
 ```
 
 **Usage**:
@@ -46,331 +334,420 @@ exceptions/
 try {
   await repository.fetchData();
 } on NetworkException catch (e) {
-  // Handle network errors
-} on OfflineException catch (e) {
-  // Handle offline errors
+  showErrorDialog('Network error: ${e.message}');
+} on ValidationException catch (e) {
+  showErrorDialog('Invalid input: ${e.message}');
+} on AppException catch (e) {
+  showErrorDialog('Error: ${e.message}');
 }
 ```
 
-#### `core/extensions/`
-Utility extensions on built-in Dart types. Domain-specific operations like unit conversions.
+### Validators
 
-```
-extensions/
-├── string_extensions.dart       # capitalize(), isValidEmail(), truncate()
-├── date_time_extensions.dart    # formatDate(), timeAgo(), isToday()
-└── num_extensions.dart          # kg2lbs(), ha2ac(), roundTo() — agricultural conversions
-```
-
-**Usage**:
+**Field Validation** (`lib/core/validators/field_validators.dart`):
 ```dart
-final kg = 50;
-final pounds = kg.kg2lbs();  // 110.231
-final area = 2.5.ha2ac();    // 6.177525
-```
-
-#### `core/validators/`
-Domain-specific validation rules for forms and data entry.
-
-```
-validators/
-├── field_validators.dart        # validateFieldName(), validateArea(), validateCoordinates()
-├── crop_validators.dart         # validateCropType(), validatePlantingDate()
-└── measurement_validators.dart  # validateYield(), validateYieldUnit()
-```
-
-**Usage** (in form widgets):
-```dart
-TextFormField(
-  validator: FieldValidators.validateFieldName,
-  // ...
-)
-```
-
-#### `core/network/`
-HTTP client setup and response handling. Centralized for all API communication.
-
-```
-network/
-├── dio_client.dart           # Dio setup with timeouts, interceptors, logging
-├── api_response.dart         # Generic response wrapper: ApiResponse<T>
-├── request_interceptor.dart  # Add auth tokens, headers (TBD)
-└── response_interceptor.dart # Handle errors, offline detection (TBD)
-```
-
-**Usage** (injected via Riverpod):
-```dart
-final apiProvider = Provider((ref) => ref.watch(dioProvider));
-```
-
-#### `core/di/`
-Dependency injection using Riverpod. All singletons and factories defined here.
-
-```
-di/
-└── providers.dart  # dioProvider, baseUrlProvider, loggerProvider
-```
-
-**Usage**:
-```dart
-final httpClient = ref.watch(dioProvider);
-```
-
-#### `core/mappers/`
-Converters between DTOs (data layer) and Entities (domain layer).
-
-```
-mappers/
-└── dto_entity_mapper.dart  # Base Mapper<DTO, Entity> interface
-```
-
-**Usage** (implement per feature):
-```dart
-class FieldRecordMapper extends Mapper<FieldRecordDTO, FieldRecordEntity> {
-  @override
-  FieldRecordEntity toDomain(FieldRecordDTO dto) => FieldRecordEntity(...);
+class FieldValidators {
+  // Field name: 2-100 characters
+  static bool isValidFieldName(String name) {
+    return name.length >= 2 && name.length <= 100;
+  }
   
-  @override
-  FieldRecordDTO toDTO(FieldRecordEntity entity) => FieldRecordDTO(...);
+  // Area: 0.01 - 10000 hectares
+  static bool isValidArea(double area) {
+    return area >= 0.01 && area <= 10000;
+  }
 }
 ```
 
-#### `core/theme/`
-Theming system (colors, typography, Material 3 design).
+### Unit Converters
 
-```
-theme/
-├── app_colors.dart      # Color palette, dark mode variants
-├── app_theme.dart       # ThemeData builder, elevation, shadows
-└── app_typography.dart  # Text styles, font scales
-```
-
-#### `core/utils/`
-Utility helpers: logging, date formatting, etc.
-
-```
-utils/
-└── logger.dart  # Production-filtered logger with pretty printing
-```
-
-#### `core/widgets/`
-Shared UI components used across screens.
-
-```
-widgets/
-├── app_scaffold.dart     # Main scaffold with bottom nav
-├── error_state.dart      # Error display widget
-├── loading_state.dart    # Loading spinner widget
-└── (form_widgets.dart)   # TBD: Input fields, buttons, cards
-```
-
----
-
-### 📁 `app/` - Application Shell
-The app entry point, routing, and bootstrap.
-
-```
-app/
-├── bootstrap.dart  # Initialize Riverpod, connectivity, logging
-├── app.dart        # MaterialApp setup, theme provider
-└── router.dart     # GoRouter configuration with ShellRoute for navigation bar
-```
-
----
-
-### 📁 `modules/` - Feature Modules
-Each module follows **Clean Architecture** with three layers:
-
-```
-modules/
-├── auth/                    # User authentication
-├── field_capture/          # Core feature: offline field plot entry
-├── forecasts/              # Yield predictions display
-├── sync/                   # Background sync orchestration
-└── traceability/           # Batch provenance tracking
-```
-
-Each module has:
-- **`data/`** - Remote/local data sources, DTOs, repositories
-- **`domain/`** - Business entities, abstract repositories, use cases
-- **`presentation/`** - Pages, widgets, Riverpod state providers
-- **`infrastructure/`** (optional) - Special infrastructure just for this module
-
-#### Example: `field_capture/` Module Structure
-
-```
-field_capture/
-├── data/
-│   ├── models/                              # DTOs (JSON serialization)
-│   │   └── field_record_dto.dart
-│   ├── datasources/
-│   │   ├── local_field_capture_datasource.dart  # SQLite access
-│   │   └── remote_field_capture_datasource.dart # API access (TBD)
-│   └── repositories/
-│       └── field_capture_repository_impl.dart   # Data layer implementation
-├── domain/
-│   ├── entities/
-│   │   └── field_record_entity.dart         # Pure business object
-│   ├── repositories/
-│   │   └── field_capture_repository.dart    # Abstract contract
-│   └── usecases/
-│       └── save_field_record_usecase.dart   # Business logic
-├── presentation/
-│   ├── pages/
-│   │   └── field_capture_page.dart          # Main screen
-│   ├── widgets/
-│   │   └── field_record_form.dart           # Form component
-│   └── providers/
-│       └── field_capture_providers.dart     # Riverpod state management
-└── field_capture.dart                       # Barrel export
-```
-
-**Data Flow**:
-```
-UI (presentation) 
-  → Use Case (domain) 
-  → Repository (data)
-  → Local/Remote DataSource
-  → SQLite / HTTP
-```
-
----
-
-## Dependency Injection (Riverpod)
-
-All dependencies defined in `core/di/providers.dart`:
-
+**Agri-Specific Unit Conversions** (`lib/core/extensions/num_extensions.dart`):
 ```dart
-final dioProvider = Provider<Dio>(...);           // HTTP client
-final baseUrlProvider = Provider<String>(...);    // API base URL
-final loggerProvider = Provider(...);             // Logger instance
+extension UnitConverter on num {
+  // Hectares ↔ Acres
+  double get ha2ac => this * 2.47105;
+  double get ac2ha => this / 2.47105;
+  
+  // Kilograms ↔ Pounds
+  double get kg2lbs => this * 2.20462;
+  double get lbs2kg => this / 2.20462;
+}
 ```
 
-**Per-module providers** go in `modules/<feature>/<feature>_providers.dart`:
+### Dependency Injection
 
+**Riverpod Setup** (`lib/core/di/providers.dart`):
 ```dart
-// In field_capture_providers.dart
-final fieldCaptureRepositoryProvider = Provider((ref) {
+// Base providers
+final dioProvider = Provider((ref) => DioClient().client);
+final baseUrlProvider = Provider((ref) => AppConfig.apiBaseUrl);
+final loggerProvider = Provider((ref) => Logger());
+
+// Repository providers
+final fieldRepositoryProvider = Provider((ref) {
   final dio = ref.watch(dioProvider);
-  return FieldCaptureRepositoryImpl(dio: dio);
-});
-
-final saveFieldRecordProvider = FutureProvider((ref) async {
-  final repo = ref.watch(fieldCaptureRepositoryProvider);
-  return repo.saveFieldRecord(...);
+  return FieldRepositoryImpl(
+    remote: FieldRemoteDataSourceImpl(dio),
+    local: FieldLocalDataSourceImpl(),
+  );
 });
 ```
 
-**In widgets**:
+---
+
+## 🎯 Feature Modules
+
+Each feature follows the same structure:
+
+```
+modules/field_capture/
+├── domain/               # Business logic
+│   ├── entities/
+│   │   └── field_record.dart
+│   ├── repositories/
+│   │   └── field_capture_repository.dart
+│   └── exceptions/
+│       └── field_exceptions.dart
+├── data/                 # External systems
+│   ├── datasources/
+│   │   ├── field_capture_remote_data_source.dart
+│   │   └── field_capture_local_data_source.dart
+│   ├── repositories/
+│   │   └── field_capture_repository_impl.dart
+│   └── models/
+│       └── field_record_dto.dart
+├── presentation/         # UI
+│   ├── pages/
+│   │   └── field_capture_page.dart
+│   ├── widgets/
+│   │   ├── field_form.dart
+│   │   └── gps_input.dart
+│   └── field_capture_providers.dart
+└── field_capture_module.dart
+```
+
+---
+
+## 💉 Dependency Injection
+
+### How to Register Dependencies
+
 ```dart
-class MyWidget extends ConsumerWidget {
+// In lib/core/di/providers.dart
+
+final fieldRepositoryProvider = Provider((ref) {
+  final dio = ref.watch(dioProvider);
+  return FieldRepositoryImpl(
+    remote: FieldRemoteDataSourceImpl(dio),
+    local: FieldLocalDataSourceImpl(),
+  );
+});
+```
+
+### How to Use Dependencies
+
+```dart
+class FieldCapturePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(myDataProvider);
-    // ...
+    // Access dependency
+    final repository = ref.watch(fieldRepositoryProvider);
+    
+    // Use in provider
+    final fieldState = ref.watch(FutureProvider((ref) {
+      return repository.getField('123');
+    }));
+    
+    return Scaffold(
+      body: fieldState.when(
+        data: (field) => FieldForm(field: field),
+        loading: () => LoadingWidget(),
+        error: (err, st) => ErrorWidget(error: err),
+      ),
+    );
   }
 }
 ```
 
 ---
 
-## Error Handling
+## ⚠️ Error Handling
 
-All errors inherit from `AppException`. Catch specific exception types:
+### Multi-Layer Error Handling
 
 ```dart
+// Domain: Define exception
+class FieldValidationException extends AppException {
+  FieldValidationException(String message) : super(message);
+}
+
+// Infrastructure: Catch and convert
 try {
-  await repository.sync();
-} on OfflineException {
-  // Show offline banner
-} on NetworkException catch (e) {
-  // Show error snackbar with message
-} on ValidationException catch (e) {
-  // Show validation error inline
-} on SyncException catch (e) {
-  // Retry with backoff
+  final dto = json.decode(response);
+} on FormatException catch (_) {
+  throw FieldValidationException('Invalid field data');
 }
+
+// Application: Wrap in state
+final saveFieldProvider = FutureProvider((ref) async {
+  try {
+    await ref.watch(fieldRepositoryProvider).saveField(field);
+  } on AppException catch (e) {
+    throw e; // Let UI layer handle
+  }
+});
+
+// Presentation: Display to user
+final state = ref.watch(saveFieldProvider);
+state.whenData((_) => showSuccess())
+     .whenError((err, st) => showError(err));
 ```
 
 ---
 
-## Validation
+## 🔄 State Management
 
-Use validators from `core/validators/` before saving data:
+### Using Riverpod
 
+**Simple Provider**:
 ```dart
-// In form
-final error = FieldValidators.validateFieldName(nameController.text);
-if (error != null) {
-  // Show error
+final nameProvider = StateProvider((ref) => '');
+```
+
+**Async Provider**:
+```dart
+final fieldProvider = FutureProvider.autoDispose((ref) {
+  final repo = ref.watch(fieldRepositoryProvider);
+  return repo.getField('123');
+});
+```
+
+**State Notifier** (for complex logic):
+```dart
+class FieldFormNotifier extends StateNotifier<FieldForm> {
+  FieldFormNotifier() : super(FieldForm.initial());
+  
+  void updateField(String value) {
+    state = state.copyWith(fieldName: value);
+  }
 }
 
-// Before API call
-CropValidators.validateCropType(cropType); // Throws ValidationException if invalid
-```
-
----
-
-## Testing
-
-Each layer can be tested independently:
-
-```
-test/
-├── domain/                      # Unit tests for usecases, entities
-├── data/                        # Unit tests for repositories, mappers
-└── presentation/                # Widget/integration tests
-```
-
-**Example: Test a usecase**
-```dart
-test('SaveFieldRecordUsecase should persist to repository', () async {
-  final mockRepo = MockFieldCaptureRepository();
-  final usecase = SaveFieldRecordUsecase(mockRepo);
-  
-  await usecase(fieldRecord);
-  
-  verify(mockRepo.save(fieldRecord)).called(1);
+final fieldFormProvider = StateNotifierProvider((_) {
+  return FieldFormNotifier();
 });
 ```
 
 ---
 
-## Adding a New Feature
+## 🧪 Testing Strategy
 
-1. **Create module folder**: `modules/my_feature/`
-2. **Define domain layer**: entities, abstract repositories, usecases
-3. **Implement data layer**: DTOs, datasources, repository implementation
-4. **Add presentation**: pages, widgets, Riverpod providers
-5. **Inject into router**: Add route in `app/router.dart`
-6. **Wire up DI**: Add providers to `my_feature_providers.dart`
+### Testing Pyramid
+
+```
+         ⬢ E2E Tests (2%)
+       ⬢⬢⬢ Integration Tests (8%)
+     ⬢⬢⬢⬢⬢ Unit Tests (90%)
+```
+
+### Unit Testing
+
+```dart
+test('FieldEntity.isSufficientSize returns true for valid area', () {
+  final field = FieldEntity(
+    id: '1',
+    cropType: 'maize',
+    areaHectares: 1.5,
+  );
+  
+  expect(field.isSufficientSize(), true);
+});
+```
+
+### Mocking
+
+```dart
+// Create mock
+final mockRepository = MockFieldRepository();
+
+// Set up return value
+when(mockRepository.getField('1')).thenAnswer(
+  (_) async => FieldEntity(id: '1', cropType: 'maize', areaHectares: 1.0),
+);
+
+// Use in test
+expect(await mockRepository.getField('1'), isNotNull);
+```
 
 ---
 
-## Best Practices
+## 📱 Offline-First Architecture
 
-✅ **DO:**
-- Use exceptions for errors (don't return null)
-- Validate input in usecases before calling repository
-- Keep business logic in domain layer (testable, reusable)
-- Use barrel exports (`feature.dart`) to hide internal structure
-- Run `flutter analyze` before committing
+### Data Flow
 
-❌ **DON'T:**
-- Direct API calls from UI (go through repository)
-- Business logic in widgets (move to usecases)
-- Hardcoded strings (use `constants.dart`)
-- Mixed concerns (e.g., sync + field capture in one class)
+```
+┌─────────────────────────────────────────────┐
+│          User Action (Save Field)           │
+└──────────────────┬──────────────────────────┘
+                   │
+                   ▼
+         ┌──────────────────────┐
+         │   Validate Input     │
+         │  (Field Validators)  │
+         └──────────┬───────────┘
+                    │
+                    ▼
+         ┌──────────────────────┐
+         │  Save to Local DB    │
+         │    (SQLite)          │
+         └──────────┬───────────┘
+                    │
+                    ▼
+         ┌──────────────────────┐
+         │ Queue for Sync       │
+         │ (Sync Queue Service) │
+         └──────────┬───────────┘
+                    │
+                    ▼
+         ┌──────────────────────┐
+         │ Network Available?   │
+         └────────┬─────────────┘
+                  │
+          ┌───────┴────────┐
+          ▼                ▼
+    YES: Sync         NO: Wait
+      to Cloud      (Retry later)
+```
+
+### Implementation
+
+```dart
+// Save field (offline-first)
+Future<void> saveField(FieldEntity field) async {
+  // 1. Validate
+  if (!FieldValidators.isValidField(field)) {
+    throw ValidationException('Invalid field');
+  }
+  
+  // 2. Save locally
+  await localDataSource.saveField(field);
+  
+  // 3. Queue for sync
+  await syncQueueService.queueFieldSave(field);
+  
+  // 4. Sync if online
+  if (await connectivity.isConnected()) {
+    await syncCoordinator.syncPending();
+  }
+}
+```
 
 ---
 
-## Quick Links
+## ✅ Best Practices
 
-- **Config**: `config/` — App constants, environment settings
-- **Errors**: `core/exceptions/` — Exception hierarchy
-- **Validators**: `core/validators/` — Input validation rules
-- **Network**: `core/network/` — HTTP client setup
-- **DI**: `core/di/providers.dart` — Dependency injection
-- **Routing**: `app/router.dart` — Navigation configuration
-- **Modules**: `modules/` — Feature implementations
+### DO ✅
 
+- ✅ Keep business logic in **domain layer**
+- ✅ Use **interfaces for abstraction**
+- ✅ Inject **dependencies** via constructors
+- ✅ Write **unit tests** for business logic
+- ✅ Use **enums** for fixed value sets
+- ✅ **Validate input** before processing
+- ✅ Log **errors** appropriately
+- ✅ Use **immutable** data structures
+
+### DON'T ❌
+
+- ❌ UI logic in widgets (move to Riverpod providers)
+- ❌ Direct API calls from UI
+- ❌ Global mutable state
+- ❌ Tight coupling between layers
+- ❌ Silent error catching
+- ❌ Hardcoded values
+- ❌ Overly complex widget trees
+
+---
+
+## �� Common Patterns
+
+### Pattern: Loading State
+
+```dart
+final dataProvider = FutureProvider((ref) async {
+  return await repository.fetchData();
+});
+
+// In widget:
+final state = ref.watch(dataProvider);
+state.when(
+  loading: () => LoadingWidget(),
+  data: (data) => DataWidget(data: data),
+  error: (err, st) => ErrorWidget(error: err),
+);
+```
+
+### Pattern: Form State
+
+```dart
+class FormNotifier extends StateNotifier<FormState> {
+  FormNotifier() : super(FormState.initial());
+  
+  void updateField(String name, dynamic value) {
+    state = state.copyWith(fields: {...state.fields, name: value});
+  }
+  
+  Future<void> submit() async {
+    state = state.copyWith(isLoading: true);
+    try {
+      await repository.saveForm(state);
+      state = state.copyWith(isLoading: false, success: true);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: e.toString());
+    }
+  }
+}
+```
+
+### Pattern: Auto-Retry
+
+```dart
+Future<T> retryAsync<T>(
+  Future<T> Function() fn, {
+  int maxAttempts = 3,
+  Duration delay = const Duration(seconds: 1),
+}) async {
+  for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await fn();
+    } catch (e) {
+      if (attempt == maxAttempts) rethrow;
+      await Future.delayed(delay * attempt);
+    }
+  }
+}
+```
+
+---
+
+## 🔍 Troubleshooting
+
+### Issue: Circular dependency between layers
+
+**Solution**: Ensure dependencies only point inward. Domain → Never depends on anything. Data → Only depends on domain. Presentation → Depends on app, config, core.
+
+### Issue: Provider not updating
+
+**Solution**: Ensure you're using `.watch()` not `.read()` in build methods. `.read()` only accesses current value, doesn't listen for changes.
+
+### Issue: Too many rebuilds
+
+**Solution**: Use `.select()` to watch only the fields you need:
+```dart
+final name = ref.watch(formProvider.select((f) => f.name));
+```
+
+---
+
+**✅ Architecture Complete!** This structure scales from MVP to production. 🚀
+
+Next: Check [QUICK_REFERENCE.md](./QUICK_REFERENCE.md) for common development tasks.

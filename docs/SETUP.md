@@ -1,767 +1,595 @@
-# Farmer Hub UG - Frontend Documentation
+# 🚀 Farmer Hub UG - Development Setup Guide
 
-## Table of Contents
+**Professional Development Environment Configuration for FarmCom Core**
 
-1. [Overview](#overview)
-2. [Project Vision](#project-vision)
-3. [Technology Stack](#technology-stack)
-4. [Getting Started](#getting-started)
-   - [Prerequisites](#prerequisites)
-   - [Installation](#installation)
-   - [Environment Setup](#environment-setup)
-   - [Running the App](#running-the-app)
-5. [Architecture](#architecture)
-   - [Design Patterns](#design-patterns)
-   - [Clean Architecture](#clean-architecture)
-   - [Directory Structure](#directory-structure)
-6. [Core Concepts](#core-concepts)
-   - [Offline-First Architecture](#offline-first-architecture)
-   - [Data Synchronization](#data-synchronization)
-   - [Error Handling](#error-handling)
-7. [Development Workflow](#development-workflow)
-   - [Creating New Features](#creating-new-features)
-   - [Code Organization](#code-organization)
-   - [State Management](#state-management)
-   - [Testing](#testing)
-8. [API Integration](#api-integration)
-9. [Database & Local Storage](#database--local-storage)
-10. [Authentication](#authentication)
-11. [Validation & Error Handling](#validation--error-handling)
-12. [Deployment](#deployment)
-13. [Best Practices](#best-practices)
-14. [Troubleshooting](#troubleshooting)
-15. [Resources](#resources)
+> 📖 Complete guide to setting up your development environment, installing dependencies, and running the FarmCom Core mobile application for the first time.
+
+**Last Updated**: May 2026 | **Status**: ✅ Production Ready | **Audience**: Developers, Contributors
 
 ---
 
-## Overview
+## 📋 Table of Contents
 
-**Farmer Hub UG** is a modern B2B agri-intelligence platform built with Flutter. It provides cooperative aggregation, predictive yield planning, and export-grade traceability for agricultural stakeholders in Uganda and across East Africa.
-
-### Key Features
-- 📱 **Offline-First** — Full functionality without internet connectivity
-- 🌾 **Field Capture** — Easy plot data entry with GPS validation
-- 📊 **Yield Forecasting** — AI-powered predictive analytics
-- 🔗 **Traceability** — Complete batch provenance tracking
-- 🔄 **Background Sync** — Automatic cloud synchronization
-- 🛡️ **Enterprise Security** — Role-based access, encrypted storage
-
-### Repository
-- **GitHub**: [FarmerHub-UG](https://github.com/asiimwe-dev/FarmLink-UG)
-- **Frontend**: Flutter (this repository)
-- **Backend**: FastAPI + PostgreSQL (separate repository)
-
----
-
-## Project Vision
-
-Farmer Hub UG transforms agricultural supply chains through offline-first intelligence:
-
-1. **For Cooperatives** — Aggregate member data, track yields, plan logistics
-2. **For Processors** — Trace raw material provenance, ensure compliance
-3. **For Exporters** — Generate export-grade traceability documentation
-4. **For Lenders** — Assess risk with yield history and land data
-5. **For Field Teams** — Capture data offline, sync when connected
-
-**Current Phase**: MVP with core modules (auth, field capture, basic sync)
+1. [Quick Start (5 Minutes)](#quick-start-5-minutes)
+2. [Prerequisites & System Requirements](#prerequisites--system-requirements)
+3. [Operating System Setup](#operating-system-setup)
+4. [Flutter Installation](#flutter-installation)
+5. [IDE & Editor Configuration](#ide--editor-configuration)
+6. [Project Repository Setup](#project-repository-setup)
+7. [Emulator & Simulator Setup](#emulator--simulator-setup)
+8. [Running Your First Build](#running-your-first-build)
+9. [Development & Debugging](#development--debugging)
+10. [Troubleshooting Common Issues](#troubleshooting-common-issues)
+11. [Performance Tips](#performance-tips)
+12. [Next Steps After Setup](#next-steps-after-setup)
+13. [Getting Help](#getting-help)
 
 ---
 
-## Technology Stack
+## ⚡ Quick Start (5 Minutes)
 
-### Core Framework
-- **Flutter 3.x** — Cross-platform mobile development (iOS, Android)
-- **Dart** — Modern, strongly-typed language
+For experienced developers with Flutter already installed:
 
-### State Management & DI
-- **Riverpod 2.x** — Reactive dependency injection and state management
-- **Flutter Riverpod** — Bindings for Flutter
-
-### Networking & HTTP
-- **Dio 5.x** — HTTP client with interceptors and error handling
-- **GoRouter 13.x** — Type-safe routing and navigation
-
-### Local Storage & Sync
-- **SQLite** (via `sqflite`) — Primary local database (TODO)
-- **Isar** (later) — High-performance alternative when AGP 8.x stable
-
-### Connectivity
-- **Connectivity Plus** — Detect online/offline state
-- **Background Sync** — Queue sync tasks when reconnected
-
-### Utilities
-- **Equatable** — Value equality for entities and models
-- **Intl** — Internationalization and date formatting
-- **Logger** — Pretty-printing debug logs
-
-### Development
-- **Analysis** — Dart linter with strict rules
-- **Testing** — Flutter test framework
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- **Flutter SDK** 3.x or later
-  ```bash
-  flutter --version
-  ```
-- **Dart SDK** (included with Flutter)
-- **Git** for version control
-- **Android Studio** or **Xcode** (for emulators)
-- **VS Code** or **Android Studio** (IDE)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/asiimwe-dev/FarmLink-UG.git
-   cd FarmLink-UG/frontend
-   ```
-
-2. **Install dependencies**
-   ```bash
-   flutter pub get
-   ```
-
-3. **Run code generation** (if needed)
-   ```bash
-   flutter pub run build_runner build --delete-conflicting-outputs
-   ```
-
-### Environment Setup
-
-Create a `.env` file in `frontend/` directory:
-
-```env
-# Development
-FLAVOR=dev
-API_BASE_URL=http://localhost:8000/api
-DEBUG=true
-
-# Staging
-# FLAVOR=staging
-# API_BASE_URL=https://staging.farmerhub.example.com/api
-# DEBUG=false
-```
-
-Update `lib/config/app_config.dart` to load from `.env` if needed.
-
-### Running the App
-
-**Development (debug mode)**
 ```bash
-flutter run --debug
+# Clone repository
+git clone https://github.com/asiimwe-dev/FarmLink-UG.git
+cd FarmLink-UG/frontend
+
+# Install dependencies
+flutter pub get
+
+# Run application
+flutter run
+
+# Hot reload shortcuts
+# Press 'r' for hot reload (fast)
+# Press 'R' for hot restart (full rebuild)
 ```
 
-**Release build**
+**⏱️ Expected Time**: 5-10 minutes
+
+---
+
+## ✅ Prerequisites & System Requirements
+
+### Minimum Requirements
+
+| Requirement | Version | Notes |
+|-------------|---------|-------|
+| **Flutter SDK** | 3.13.0 or higher | [Download](https://flutter.dev/docs/get-started/install) |
+| **Dart SDK** | 3.1.0 or higher | Included with Flutter |
+| **Git** | 2.30+ | For version control |
+| **RAM** | 8 GB minimum | 16 GB recommended for emulator |
+| **Disk Space** | 5 GB available | For SDK, dependencies, and caches |
+| **Operating System** | macOS 10.15+, Windows 10+, Ubuntu 18.04+ | Any modern OS |
+
+### Device/Emulator
+
+- **Physical Device**: Android 5.0+ or iOS 12+
+- **Android Emulator**: API 21+ recommended
+- **iOS Simulator**: Xcode 13+
+
+### Verify Installation
+
 ```bash
-flutter run --release
+# Check Flutter version
+flutter --version
+
+# Check Dart version
+dart --version
+
+# Run diagnostics
+flutter doctor
+
+# Expected output: 
+# ✓ Flutter (Channel stable, version 3.x.x)
+# ✓ Dart (version 3.x.x)
+# ✓ Android toolchain
+# ✓ Xcode (if on macOS)
 ```
 
-**On specific device**
+---
+
+## 🖥️ Operating System Setup
+
+### macOS Setup
+
+**Install Homebrew** (if not installed):
 ```bash
-flutter devices  # List connected devices
-flutter run -d <device_id>
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-**Web (for testing)**
+**Install Git and Dependencies**:
 ```bash
-flutter run -d chrome
+brew install git
+brew install --cask android-studio
+brew install --cask xcode  # For iOS development
 ```
 
----
-
-## Architecture
-
-### Design Patterns
-
-1. **Clean Architecture** — Separation of concerns (domain/data/presentation)
-2. **Repository Pattern** — Abstract data access layer
-3. **Dependency Injection** — Riverpod providers for testability
-4. **State Management** — Riverpod for reactive state
-5. **Mapper Pattern** — DTO↔Entity transformations
-
-### Clean Architecture
-
-```
-Presentation Layer (UI)
-    ↓ (depends on)
-Application Layer (Use Cases)
-    ↓ (depends on)
-Domain Layer (Entities, Abstract Repos)
-    ↓ (depends on)
-Data Layer (DTOs, Concrete Repos, DataSources)
-```
-
-**Benefits**:
-- ✅ Testable (mock each layer independently)
-- ✅ Reusable (business logic not coupled to UI)
-- ✅ Maintainable (clear responsibilities)
-- ✅ Scalable (easy to add new features)
-
-### Directory Structure
-
-```
-frontend/lib/
-├── config/                          # Environment & constants
-│   ├── app_config.dart
-│   └── constants.dart
-├── core/                            # Shared infrastructure
-│   ├── di/                          # Dependency injection
-│   ├── exceptions/                  # Error hierarchy
-│   ├── extensions/                  # Utility extensions
-│   ├── network/                     # HTTP client
-│   ├── validators/                  # Input validation
-│   ├── mappers/                     # DTO↔Entity conversion
-│   ├── theme/                       # UI theming
-│   ├── utils/                       # Helpers
-│   └── widgets/                     # Reusable components
-├── app/                             # Application shell
-│   ├── bootstrap.dart
-│   ├── app.dart
-│   └── router.dart
-└── modules/                         # Feature modules
-    ├── auth/                        # Authentication
-    ├── field_capture/               # Field data entry
-    ├── sync/                        # Synchronization
-    ├── traceability/                # Batch tracking
-    └── forecasts/                   # Yield predictions
-```
-
-See `frontend/lib/ARCHITECTURE.md` for detailed structure explanation.
-
----
-
-## Core Concepts
-
-### Offline-First Architecture
-
-The app works **completely offline**. Data is stored locally; sync happens when connected.
-
-**Flow**:
-1. User enters field data → Saved to **local SQLite**
-2. App detects connectivity → Queues data for sync
-3. Background sync service → Pushes to backend API
-4. Backend confirms → Marks as synced locally
-5. User can still view/edit data even if sync fails
-
-**Implementation**:
-- `modules/sync/` — Manages sync queue and orchestration
-- `connectivity_plus` — Detects online/offline state
-- Local caching — Reduces API calls
-
-### Data Synchronization
-
-**Sync Service** (`modules/sync/`):
-- Monitors connectivity state
-- Queues outgoing changes
-- Batches requests to reduce API load
-- Implements exponential backoff on failures
-- Resolves conflicts (local vs remote)
-
-**Conflict Resolution Strategy**:
-- **Last-Write-Wins** — For most data
-- **Manual Review** — For critical data (high-value transactions)
-
-### Error Handling
-
-All errors inherit from `AppException`. Specific types:
-
-```dart
-AppException
-├── NetworkException      // API, connection failures
-├── ValidationException   // Invalid input data
-├── OfflineException     // No connectivity
-├── SyncException        // Sync queue failures
-└── UnknownException     // Unhandled errors
-```
-
-**Usage**:
-```dart
-try {
-  await fieldRepo.saveField(field);
-} on ValidationException catch (e) {
-  showInlineError(e.message);
-} on NetworkException catch (e) {
-  showOfflineBanner(e.message);
-} on SyncException catch (e) {
-  retryWithBackoff();
-}
-```
-
----
-
-## Development Workflow
-
-### Creating New Features
-
-**1. Define Domain Layer** (business logic)
-```
-modules/my_feature/
-├── domain/
-│   ├── entities/
-│   │   └── my_entity.dart       # Pure Dart class (no framework code)
-│   ├── repositories/
-│   │   └── my_repository.dart   # Abstract contract
-│   └── usecases/
-│       └── my_usecase.dart      # Business logic, input validation
-```
-
-**2. Implement Data Layer** (storage & API)
-```
-modules/my_feature/
-├── data/
-│   ├── models/
-│   │   └── my_dto.dart          # JSON serializable
-│   ├── datasources/
-│   │   ├── local_datasource.dart     # SQLite access
-│   │   └── remote_datasource.dart    # API client
-│   └── repositories/
-│       └── my_repository_impl.dart   # Concrete implementation
-```
-
-**3. Add Presentation Layer** (UI & state)
-```
-modules/my_feature/
-├── presentation/
-│   ├── pages/
-│   │   └── my_page.dart         # Full screen
-│   ├── widgets/
-│   │   └── my_widget.dart       # Reusable component
-│   └── providers/
-│       └── my_providers.dart    # Riverpod state
-```
-
-**4. Wire Up DI**
-```dart
-// In my_feature_providers.dart
-final myRepositoryProvider = Provider((ref) {
-  final dio = ref.watch(dioProvider);
-  return MyRepositoryImpl(dio);
-});
-
-final myDataProvider = FutureProvider((ref) async {
-  final repo = ref.watch(myRepositoryProvider);
-  return repo.fetchData();
-});
-```
-
-**5. Add Route**
-```dart
-// In app/router.dart
-GoRoute(
-  path: '/my-feature',
-  builder: (context, state) => MyPage(),
-)
-```
-
-### Code Organization
-
-**Barrel Exports** (hide internal structure):
-```dart
-// In modules/my_feature/my_feature.dart
-export 'domain/entities/my_entity.dart';
-export 'domain/repositories/my_repository.dart';
-export 'presentation/pages/my_page.dart';
-
-// Usage:
-import 'package:farmer_hub_ug/modules/my_feature/my_feature.dart';
-final entity = MyEntity(...);
-```
-
-**Naming Conventions**:
-- Files: `snake_case` (e.g., `field_record.dart`)
-- Classes: `PascalCase` (e.g., `FieldRecord`)
-- Constants: `camelCase` (e.g., `maxFieldArea`)
-- Privates: `_leadingUnderscore` (e.g., `_internalMethod`)
-
-### State Management
-
-Using **Riverpod** for reactive state:
-
-```dart
-// Simple provider (read-only)
-final counterProvider = StateProvider<int>((ref) => 0);
-
-// Async provider (for API calls)
-final fieldProvider = FutureProvider.family<FieldRecord, String>((ref, id) async {
-  final repo = ref.watch(fieldRepositoryProvider);
-  return repo.fetchField(id);
-});
-
-// State notifier (for complex state)
-final fieldListProvider = StateNotifierProvider<FieldListNotifier, List<FieldRecord>>(
-  (ref) => FieldListNotifier(ref.watch(fieldRepositoryProvider)),
-);
-```
-
-**In Widgets**:
-```dart
-class MyWidget extends ConsumerWidget {
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // Watch provider to rebuild on changes
-    final fields = ref.watch(fieldListProvider);
-    
-    return fields.when(
-      data: (data) => ListView(children: [...]),
-      loading: () => LoadingState(),
-      error: (err, st) => ErrorState(err.toString()),
-    );
-  }
-}
-```
-
-### Testing
-
-**Unit Tests** (domain logic):
-```dart
-test('SaveFieldUsecase validates area', () {
-  final usecase = SaveFieldUsecase(mockRepo);
-  expect(
-    () => usecase(invalidArea: -5),
-    throwsA(isA<ValidationException>()),
-  );
-});
-```
-
-**Widget Tests** (UI components):
-```dart
-testWidgets('FieldForm shows validation errors', (tester) async {
-  await tester.pumpWidget(TestApp(child: FieldForm()));
-  await tester.enterText(find.byType(TextField), '');
-  await tester.pumpWidget(SizedBox.shrink()); // Trigger rebuild
-  expect(find.text('Field name required'), findsOneWidget);
-});
-```
-
-**Run Tests**:
+**Accept Xcode Licenses**:
 ```bash
-flutter test                           # All tests
-flutter test test/domain/              # Specific directory
-flutter test --coverage                # With coverage report
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+sudo xdm-accept-license
+```
+
+### Windows Setup
+
+1. **Install Git**
+   - Download: [Git for Windows](https://git-scm.com/download/win)
+   - Use default settings
+
+2. **Install Android Studio**
+   - Download: [Android Studio](https://developer.android.com/studio)
+   - During installation, select Android SDK, Android SDK Platform, and Android Virtual Device
+
+3. **Install Visual Studio Code** (Optional but recommended)
+   - Download: [VS Code](https://code.visualstudio.com)
+
+### Linux Setup (Ubuntu/Debian)
+
+```bash
+# Update packages
+sudo apt update && sudo apt upgrade
+
+# Install dependencies
+sudo apt install -y git curl unzip xz-utils zip libglu1-mesa
+
+# Install Android Studio
+# Download from https://developer.android.com/studio
+# Or use snap: sudo snap install android-studio --classic
+
+# Set Android SDK permissions
+sudo chown -R $USER:$USER ~/Android/
 ```
 
 ---
 
-## API Integration
+## 📦 Flutter Installation
 
-### HTTP Client Setup
+### Step 1: Download Flutter SDK
 
-Located in `core/network/dio_client.dart`. Configured with:
-- Base URL from `AppConfig`
-- Request/response interceptors
-- Timeout handling
-- Error logging (debug mode)
+```bash
+# macOS/Linux
+git clone https://github.com/flutter/flutter.git -b stable ~/flutter
 
-### Making API Calls
-
-```dart
-// In datasource
-class RemoteFieldDataSource {
-  final Dio dio;
-  
-  Future<FieldRecordDTO> fetchField(String id) async {
-    try {
-      final response = await dio.get('/fields/$id');
-      return FieldRecordDTO.fromJson(response.data);
-    } on DioException catch (e) {
-      throw NetworkException(
-        message: 'Failed to fetch field',
-        originalException: e,
-      );
-    }
-  }
-}
+# Windows (using Git Bash)
+git clone https://github.com/flutter/flutter.git -b stable %USERPROFILE%\flutter
 ```
 
-### Authentication
+### Step 2: Add Flutter to PATH
 
-**Token Management** (TODO: Complete implementation):
-- Store token in secure storage (Flutter Secure Storage)
-- Add token to request headers
-- Refresh token on 401 Unauthorized
-- Clear token on logout
+**macOS/Linux**:
+```bash
+# Edit ~/.zshrc or ~/.bashrc (depending on your shell)
+export PATH="$PATH:$HOME/flutter/bin"
 
-```dart
-// In request interceptor (TBD)
-dio.interceptors.add(
-  InterceptorsWrapper(
-    onRequest: (options, handler) {
-      final token = ref.watch(authTokenProvider);
-      if (token != null) {
-        options.headers['Authorization'] = 'Bearer $token';
-      }
-      return handler.next(options);
-    },
-  ),
-);
+# Reload shell
+source ~/.zshrc  # or ~/.bashrc
+```
+
+**Windows**:
+1. Press `Win + X` → System (or Settings → System)
+2. Click "Advanced system settings"
+3. Click "Environment Variables"
+4. Under "User variables", click "New"
+5. Variable name: `PATH`
+6. Variable value: `C:\Users\[YourUsername]\flutter\bin`
+7. Click OK and restart your computer
+
+### Step 3: Verify Installation
+
+```bash
+flutter doctor
+
+# Should show:
+# ✓ Flutter (version x.x.x)
+# ✓ Dart SDK
+# ✓ Chrome (for web development)
 ```
 
 ---
 
-## Database & Local Storage
+## 🎯 IDE & Editor Configuration
 
-### SQLite (Planned)
+### Visual Studio Code (Recommended for Flutter)
 
-**Setup** (TODO):
-```dart
-// In core/persistence/database_provider.dart
-final databaseProvider = FutureProvider((ref) async {
-  final dbPath = await getDatabasesPath();
-  return openDatabase('$dbPath/farmerhub.db');
-});
-```
+**Install VS Code**:
+- Download: [https://code.visualstudio.com](https://code.visualstudio.com)
 
-**Tables** (planned):
-- `field_records` — Farm plot data
-- `crop_records` — Crop planting info
-- `yield_measurements` — Harvest data
-- `sync_queue` — Pending remote changes
-- `users` — Local user info
+**Install Extensions**:
+1. Open VS Code
+2. Go to Extensions (Ctrl+Shift+X / Cmd+Shift+X)
+3. Search and install:
+   - **Flutter** (Dart Code) - Official Flutter support
+   - **Dart** (Dart Code) - Dart language support
+   - **Pubspec Assist** - Package management helper
+   - **GitLens** - Git integration
 
-### Local Datasource
-
-```dart
-class LocalFieldDataSource {
-  final Database db;
-  
-  Future<void> saveField(FieldRecordDTO dto) async {
-    await db.insert(
-      'field_records',
-      dto.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
-  }
-  
-  Future<List<FieldRecordDTO>> getLocalFields() async {
-    final rows = await db.query('field_records');
-    return rows.map(FieldRecordDTO.fromMap).toList();
-  }
-}
-```
-
----
-
-## Authentication
-
-### User Login Flow
-
-1. User enters email + password
-2. Call `/auth/login` endpoint
-3. Backend returns JWT token + refresh token
-4. Store tokens securely
-5. Add token to subsequent requests
-6. On 401, refresh token
-7. On refresh failure, logout user
-
-**State** (via Riverpod):
-```dart
-final authTokenProvider = StateProvider<String?>((ref) => null);
-final currentUserProvider = StateProvider<User?>((ref) => null);
-
-final loginProvider = FutureProvider.family<void, (String, String)>((ref, creds) async {
-  final (email, password) = creds;
-  final response = await ref.watch(dioProvider).post(
-    '/auth/login',
-    data: {'email': email, 'password': password},
-  );
-  ref.read(authTokenProvider.notifier).state = response.data['token'];
-});
-```
-
----
-
-## Validation & Error Handling
-
-### Input Validation
-
-Located in `core/validators/`. Covers:
-- **Field Validators** — Field names, areas, GPS coordinates
-- **Crop Validators** — Crop types, planting dates
-- **Measurement Validators** — Yields, units
-
-```dart
-// Usage in forms
-TextFormField(
-  validator: FieldValidators.validateFieldName,
-  onChanged: (value) {
-    setState(() => fieldNameError = FieldValidators.validateFieldName(value));
+**VS Code Settings** (`settings.json`):
+```json
+{
+  "dart.enableSdkFormatter": true,
+  "dart.lineLength": 100,
+  "editor.formatOnSave": true,
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnSave": true
   },
-)
-```
-
-### Error Display
-
-**Network Errors**:
-```dart
-if (asyncValue.hasError) {
-  return ErrorState(
-    title: 'Connection Failed',
-    message: 'Check your internet and try again',
-    onRetry: () => ref.refresh(dataProvider),
-  );
+  "dart.flutterSdkPath": "/path/to/flutter"
 }
 ```
 
-**Validation Errors**:
-```dart
-if (error is ValidationException) {
-  return Padding(
-    padding: EdgeInsets.only(top: 8),
-    child: Text(error.message, style: TextStyle(color: Colors.red)),
-  );
-}
+### Android Studio
+
+**Install Extensions**:
+1. Open Android Studio
+2. Go to Preferences/Settings
+3. Search "Plugins"
+4. Install:
+   - **Flutter** plugin
+   - **Dart** plugin
+
+**Configure SDK**:
+1. Preferences → Languages & Frameworks → Dart
+2. Set Dart SDK to `[flutter-path]/bin/cache/dart-sdk`
+
+---
+
+## 🏗️ Project Repository Setup
+
+### Clone Repository
+
+```bash
+# Clone from GitHub
+git clone https://github.com/asiimwe-dev/FarmLink-UG.git
+cd FarmLink-UG/frontend
+
+# Verify you're in the correct directory
+ls -la
+# Should show: pubspec.yaml, lib/, test/, etc.
+```
+
+### Install Dependencies
+
+```bash
+# Install all Pub dependencies
+flutter pub get
+
+# Upgrade dependencies to latest compatible versions (optional)
+flutter pub upgrade
+
+# Check for issues
+flutter pub audit
+```
+
+### Analyze Project
+
+```bash
+# Run static analysis
+flutter analyze
+
+# Should output: 0 issues found
 ```
 
 ---
 
-## Deployment
+## 📱 Emulator & Simulator Setup
 
-### Build APK (Android)
+### Android Emulator
+
+**Create Virtual Device**:
+```bash
+# List available system images
+flutter emulators
+
+# Create new emulator
+flutter emulators create --name farmhub_dev
+
+# Start emulator
+flutter emulators --launch farmhub_dev
+
+# Or from Android Studio:
+# 1. Open AVD Manager (Tools → AVD Manager)
+# 2. Click "Create Virtual Device"
+# 3. Select Pixel 5 or similar
+# 4. Select API 30+ image
+# 5. Complete setup
+```
+
+**Recommended Settings**:
+- Device: Pixel 5 or Pixel 6
+- API Level: 30 or higher
+- RAM: 2 GB minimum (4 GB recommended)
+- Storage: 2 GB
+
+### iOS Simulator
 
 ```bash
+# Start iOS Simulator
+open -a Simulator
+
+# List available simulators
+xcrun simctl list devices
+
+# Start specific simulator
+xcrun simctl boot "iPhone 14 Pro"
+
+# Note: iOS development requires macOS
+```
+
+---
+
+## 🚀 Running Your First Build
+
+### Run on Emulator/Simulator
+
+```bash
+# Start emulator first, then run:
+flutter run
+
+# For verbose output:
+flutter run -v
+
+# Hot reload during development:
+# Press 'r' in terminal
+
+# Hot restart:
+# Press 'R' in terminal
+
+# Stop app:
+# Press 'q' in terminal
+```
+
+### Run on Physical Device
+
+**Android**:
+```bash
+# Enable Developer Mode on device
+# 1. Settings → About Phone
+# 2. Tap "Build Number" 7 times
+# 3. Settings → Developer Options
+# 4. Enable "USB Debugging"
+# 5. Connect via USB cable
+
+# List connected devices
+flutter devices
+
+# Run on device
+flutter run
+```
+
+**iOS**:
+```bash
+# Connect iPhone via USB
+# Trust the computer when prompted
+
+# List connected devices
+flutter devices
+
+# Run on device
+flutter run
+
+# Note: May require Apple Developer account
+```
+
+### Build for Release
+
+```bash
+# Android (creates APK)
 flutter build apk --release
-# Output: build/app/outputs/flutter-app.apk
-```
 
-### Build AAB (Google Play)
-
-```bash
+# Android (creates App Bundle for Play Store)
 flutter build appbundle --release
-# Output: build/app/outputs/bundle/release/app.aab
-```
 
-### Build IPA (iOS)
-
-```bash
+# iOS (creates .ipa)
 flutter build ios --release
-# Then upload via Xcode or TestFlight
+
+# Output location:
+# Android: build/app/outputs/flutter-apk/
+# iOS: build/ios/ipa/
 ```
 
-### Store Configuration
-
-- **Google Play**: Upload AAB to Play Console
-- **App Store**: Archive via Xcode, upload via App Store Connect
-- **Version Management**: Update `pubspec.yaml` version before build
-
 ---
 
-## Best Practices
+## 🔧 Development & Debugging
 
-### Code Style
+### Hot Reload & Hot Restart
 
-- ✅ Use `final` by default (immutability)
-- ✅ Private fields with `_` prefix
-- ✅ PascalCase for classes, snake_case for files
-- ✅ Use type annotations (no `var` for public APIs)
-- ✅ Document public APIs with `///` comments
+| Command | Keyboard | Effect |
+|---------|----------|--------|
+| **Hot Reload** | `r` | Reload code without full rebuild (fast) |
+| **Hot Restart** | `R` | Full restart with app state reset |
+| **Quit** | `q` | Stop the app |
+| **List Options** | `h` | Show help menu |
 
-### Architecture
+### Debugging Tools
 
-- ✅ Keep business logic in domain layer
-- ✅ Avoid UI imports in data/domain layers
-- ✅ Use exceptions for errors (not nullable returns)
-- ✅ Validate input in usecases before database/API calls
-- ✅ Use barrel exports to hide internal structure
-
-### State Management
-
-- ✅ Use Riverpod providers (never pass state via constructors)
-- ✅ Keep state close to where it's used
-- ✅ Use `.family` for parameterized providers
-- ✅ Prefer `FutureProvider` for async operations
-- ✅ Use `.select` to watch only needed properties
-
-### Testing
-
-- ✅ Test behavior, not implementation
-- ✅ Mock external dependencies
-- ✅ Write tests before code (TDD)
-- ✅ Aim for >80% code coverage on critical paths
-- ✅ Test error cases, not just happy path
-
-### Performance
-
-- ✅ Use `const` constructors where possible
-- ✅ Avoid rebuilds with `RepaintBoundary`
-- ✅ Cache network responses
-- ✅ Lazy-load large lists
-- ✅ Profile with DevTools before optimizing
-
----
-
-## Troubleshooting
-
-### Common Issues
-
-**Issue: "CocoaPods dependency conflict"**
+**Flutter DevTools**:
 ```bash
-cd ios
-rm -rf Pods Podfile.lock
-cd ..
-flutter clean
-flutter pub get
+# Start DevTools
+flutter pub global activate devtools
+devtools
+
+# Or from VS Code:
+# Command Palette → Flutter: Open DevTools
 ```
 
-**Issue: "Gradle build failed on Android"**
+**Logging**:
+```dart
+import 'package:logger/logger.dart';
+
+final logger = Logger();
+
+logger.i('Info message');      // Info
+logger.w('Warning message');   // Warning
+logger.e('Error message');     // Error
+logger.d('Debug message');     // Debug
+```
+
+**Breakpoint Debugging**:
+1. Set breakpoint in VS Code (click line number)
+2. Run app in debug mode: `flutter run`
+3. App pauses at breakpoint
+4. Use Debug Console to inspect variables
+
+---
+
+## 🐛 Troubleshooting Common Issues
+
+### Issue: "Flutter not found"
+
+**Solution**:
 ```bash
-cd android
-./gradlew clean
-cd ..
-flutter clean
-flutter pub get
+# Verify PATH is set
+echo $PATH
+
+# Add to PATH manually
+export PATH="$PATH:$HOME/flutter/bin"
+
+# Verify flutter is accessible
+which flutter
 ```
 
-**Issue: "Dio request timeouts"**
-Check network/firewall. Increase timeout in `AppConstants.networkTimeout`.
+### Issue: "Gradle build failed"
 
-**Issue: "State not updating in Riverpod"**
-Ensure you're watching the provider: `ref.watch(myProvider)` not `ref.read(myProvider)`.
+**Solution**:
+```bash
+# Clean build cache
+flutter clean
 
-**Issue: "Sync queue stuck"**
-Check logs in `core/utils/logger.dart`. Manually trigger retry or clear queue.
+# Get dependencies again
+flutter pub get
+
+# Try build again
+flutter run
+
+# If still fails, check gradle version
+```
+
+### Issue: "Android SDK not found"
+
+**Solution**:
+```bash
+# Run diagnostics
+flutter doctor -v
+
+# Set Android SDK path manually
+export ANDROID_SDK_ROOT=~/Android/Sdk
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools"
+```
+
+### Issue: "No connected devices"
+
+**Solution**:
+```bash
+# List available devices
+flutter devices
+
+# If empty, either:
+# 1. Start emulator: flutter emulators --launch [name]
+# 2. Connect physical device with USB debugging enabled
+
+# Check USB connection
+adb devices
+```
+
+### Issue: "Xcode build failed" (macOS)
+
+**Solution**:
+```bash
+# Clean Xcode cache
+flutter clean
+rm -rf ios/Pods ios/Podfile.lock
+
+# Reinstall dependencies
+flutter pub get
+
+# Accept Xcode licenses
+sudo xcode-select --reset
+sudo xdm-accept-license
+
+# Try again
+flutter run
+```
 
 ---
 
-## Resources
+## ⚡ Performance Tips
 
-### Flutter & Dart
-- [Flutter Docs](https://flutter.dev/docs)
-- [Dart Language Tour](https://dart.dev/guides/language/language-tour)
+### Optimize Build Times
 
-### State Management
-- [Riverpod Docs](https://riverpod.dev)
-- [Flutter Riverpod](https://riverpod.dev/docs/ecosystem/flutter_riverpod)
+```bash
+# Use split debug build for faster iteration
+flutter run --split-per-abi
 
-### Architecture
-- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
-- [Repository Pattern](https://www.notion.so/Repository-Pattern-in-Flutter-0b05c5e2c8f4)
+# Disable animations during development
+flutter run --enable-software-rendering
 
-### Testing
-- [Flutter Testing Guide](https://flutter.dev/docs/testing)
-- [Mockito](https://pub.dev/packages/mockito)
+# Use verbose output to identify slow steps
+flutter build apk -v
+```
 
-### Design
-- [Material Design 3](https://m3.material.io)
-- [Flutter UI Documentation](https://flutter.dev/docs/development/ui)
+### Emulator Performance
 
----
+- Use **hardware acceleration** when available
+- Allocate sufficient **RAM** (4+ GB recommended)
+- Use **faster storage** (SSD recommended)
+- Disable unnecessary sensors/features
 
-## License
+### Development Best Practices
 
-This project is private and confidential. All rights reserved.
-
-## Contact
-
-For questions or issues:
-- Create a GitHub issue in the repository
-- Contact the development team
+- Use **hot reload** frequently during UI development
+- Keep **emulator running** between sessions
+- Use **Android Studio's Profiler** to identify bottlenecks
+- Enable **null safety** for compile-time error checking
 
 ---
 
-**Last Updated**: May 2026  
-**Maintained By**: Farmer Hub UG Development Team
+## 📚 Next Steps After Setup
+
+1. **Read ARCHITECTURE.md** — Understand code structure
+2. **Read QUICK_REFERENCE.md** — Learn common workflows
+3. **Explore the codebase**:
+   ```bash
+   cd lib
+   ls -la
+   # Check: app/, config/, core/, modules/
+   ```
+4. **Run your first test**:
+   ```bash
+   flutter test
+   ```
+5. **Make a small code change** and use hot reload:
+   - Edit a string in `lib/app/app.dart`
+   - Press `r` to see changes instantly
+
+---
+
+## ❓ Getting Help
+
+### Resources
+
+- **Official Documentation**: [Flutter.dev](https://flutter.dev/docs)
+- **Dart Documentation**: [Dart.dev](https://dart.dev)
+- **Stack Overflow**: Tag `flutter`
+- **GitHub Issues**: [FarmLink-UG Issues](https://github.com/asiimwe-dev/FarmLink-UG/issues)
+
+### Common Documentation Links
+
+- [Flutter Installation](https://flutter.dev/docs/get-started/install)
+- [Flutter for Android Developers](https://flutter.dev/docs/get-started/flutter-for/android-devs)
+- [Flutter for iOS Developers](https://flutter.dev/docs/get-started/flutter-for/ios-devs)
+- [Flutter Widget Catalog](https://flutter.dev/docs/development/ui/widgets)
+
+### Ask for Help
+
+1. Check existing [GitHub Issues](https://github.com/asiimwe-dev/FarmLink-UG/issues)
+2. Search Stack Overflow and Flutter docs
+3. Post in GitHub Discussions
+4. Contact project maintainers
+
+---
+
+**✅ Setup Complete!** You're now ready to start developing FarmCom Core. 🎉
+
+Next: Read [ARCHITECTURE.md](./ARCHITECTURE.md) to understand the codebase structure.
