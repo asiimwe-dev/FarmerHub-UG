@@ -1,4 +1,4 @@
-# Farmer Hub UG - Complete Documentation
+# Farmer Hub UG - Documentation
 
 Welcome to **Farmer Hub UG**, a professional B2B agri-intelligence platform for cooperatives, exporters, and field teams across East Africa.
 
@@ -6,13 +6,13 @@ Welcome to **Farmer Hub UG**, a professional B2B agri-intelligence platform for 
 
 | I want to... | Read this |
 |---|---|
-| **Get started developing** | → [SETUP.md](./SETUP.md) |
-| **Understand the codebase** | → [ARCHITECTURE.md](./ARCHITECTURE.md) |
-| **Contribute code** | → [CONTRIBUTING.md](./CONTRIBUTING.md) |
-| **See project vision** | → [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md) |
-| **Understand business model** | → [BUSINESS_MODEL.md](./BUSINESS_MODEL.md) |
-| **Check development roadmap** | → [ROADMAP.md](./ROADMAP.md) |
-| **Quick developer reference** | → [QUICK_REFERENCE.md](./QUICK_REFERENCE.md) |
+| **Get started developing** | → [docs/SETUP.md](./docs/SETUP.md) |
+| **Understand the codebase** | → [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) |
+| **Contribute code** | → [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) |
+| **See project vision** | → [docs/PROJECT_OVERVIEW.md](./docs/PROJECT_OVERVIEW.md) |
+| **Understand business model** | → [docs/BUSINESS_MODEL.md](./docs/BUSINESS_MODEL.md) |
+| **Check development roadmap** | → [docs/ROADMAP.md](./docs/ROADMAP.md) |
+| **Quick developer reference** | → [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md) |
 
 ---
 
@@ -34,7 +34,7 @@ Welcome to **Farmer Hub UG**, a professional B2B agri-intelligence platform for 
 - 🛡️ **Enterprise-Grade** — Professional code quality and security
 - 📊 **Data-Driven** — Yield forecasting and predictive analytics
 
-**Learn more:** See [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md)
+**Learn more:** See [docs/PROJECT_OVERVIEW.md](./docs/PROJECT_OVERVIEW.md)
 
 ---
 
@@ -53,7 +53,7 @@ flutter run
 
 ### Complete Setup Guide
 
-**→ [See SETUP.md](./SETUP.md) for full environment setup instructions**
+**→ [See docs/SETUP.md](./docs/SETUP.md) for full environment setup instructions**
 
 Includes:
 - Prerequisites (Flutter, Git, IDE)
@@ -68,14 +68,16 @@ Includes:
 
 ```
 FarmLink-UG/
-├── README.md                           ← Overview & navigation
-├── SETUP.md                            ← Environment setup ⭐
-├── ARCHITECTURE.md                     ← Code structure & patterns
-├── CONTRIBUTING.md                     ← Contribution guide & CoC
-├── QUICK_REFERENCE.md                  ← Developer shortcuts
-├── PROJECT_OVERVIEW.md                 ← Business vision
-├── BUSINESS_MODEL.md                   ← Revenue model
-├── ROADMAP.md                          ← 2026-2031 roadmap
+├── README.md                           ← You are here
+├── docs/                               ← ALL DOCUMENTATION
+│   ├── SETUP.md                        # Environment setup
+│   ├── ARCHITECTURE.md                 # Code structure & patterns
+│   ├── CONTRIBUTING.md                 # Contribution guide & CoC
+│   ├── QUICK_REFERENCE.md              # Developer shortcuts
+│   ├── PROJECT_OVERVIEW.md             # Business vision
+│   ├── BUSINESS_MODEL.md               # Revenue model
+│   ├── ROADMAP.md                      # Development phases
+│   └── archive/                        # Legacy documentation
 ├── frontend/
 │   ├── lib/
 │   │   ├── main.dart
@@ -89,10 +91,10 @@ FarmLink-UG/
 │   │   └── modules/                    # Feature modules
 │   ├── test/                           # Test suite
 │   └── pubspec.yaml                    # Dependencies
-└── docs/                               # Archive & legacy
+└── FARMCOM_CORE_VC_Business_Plan.pdf   # Business plan reference
 ```
 
-**See:** [ARCHITECTURE.md](./ARCHITECTURE.md) → Directory Structure
+**See:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Directory Structure
 
 ---
 
@@ -103,21 +105,21 @@ FarmLink-UG/
 - Automatic local storage
 - Background sync when reconnected
 
-**Learn more:** [ARCHITECTURE.md](./ARCHITECTURE.md) → Offline-First Architecture
+**Learn more:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Offline-First Architecture
 
 ### 2. Field Data Capture
 - GPS-enabled plot entry
 - Crop and yield data
 - Offline form submission
 
-**Learn more:** [ARCHITECTURE.md](./ARCHITECTURE.md) → Modules
+**Learn more:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Modules
 
 ### 3. Data Synchronization
 - Queue-based background sync
 - Exponential backoff on failures
 - Batch processing
 
-**Learn more:** [ARCHITECTURE.md](./ARCHITECTURE.md) → Data Synchronization
+**Learn more:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Data Synchronization
 
 ### 4. Traceability
 - Batch provenance tracking
@@ -129,7 +131,7 @@ FarmLink-UG/
 - Risk assessment
 - Recommendations
 
-**See roadmap:** [ROADMAP.md](./ROADMAP.md)
+**See roadmap:** [docs/ROADMAP.md](./docs/ROADMAP.md)
 
 ---
 
@@ -144,7 +146,7 @@ FarmLink-UG/
 - **Database**: SQLite (local)
 - **Connectivity**: Connectivity Plus
 
-**Full details:** [SETUP.md](./SETUP.md) → Technology Stack
+**Full details:** [docs/SETUP.md](./docs/SETUP.md) → Technology Stack
 
 ---
 
@@ -160,19 +162,19 @@ flutter test                 # All pass
 dart format lib/             # Formatted
 ```
 
-**Details:** [CONTRIBUTING.md](./CONTRIBUTING.md) → Code Standards
+**Details:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → Code Standards
 
 ### Common Tasks
 
 | Task | Reference |
 |------|-----------|
-| Add new feature | [QUICK_REFERENCE.md](./QUICK_REFERENCE.md) → Workflows |
-| Write tests | [ARCHITECTURE.md](./ARCHITECTURE.md) → Testing |
-| Add page | [QUICK_REFERENCE.md](./QUICK_REFERENCE.md) → New Page |
-| Handle errors | [ARCHITECTURE.md](./ARCHITECTURE.md) → Error Handling |
-| Validate input | [QUICK_REFERENCE.md](./QUICK_REFERENCE.md) → Validation |
+| Add new feature | [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md) → Workflows |
+| Write tests | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Testing |
+| Add page | [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md) → New Page |
+| Handle errors | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Error Handling |
+| Validate input | [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md) → Validation |
 
-**Full guide:** [ARCHITECTURE.md](./ARCHITECTURE.md)
+**Full guide:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)
 
 ### Code Standards
 
@@ -182,7 +184,7 @@ dart format lib/             # Formatted
 - **Testing**: 90%+ coverage for business logic
 - **Docs**: Public APIs documented with `///`
 
-**See:** [CONTRIBUTING.md](./CONTRIBUTING.md) → Code Standards
+**See:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → Code Standards
 
 ---
 
@@ -193,7 +195,7 @@ dart format lib/             # Formatted
 ✅ **Be Respectful, Collaborative, Accountable**  
 ❌ **No Harassment, Plagiarism, or Conflicts of Interest**
 
-**Full conduct:** [CONTRIBUTING.md](./CONTRIBUTING.md) → Code of Conduct
+**Full conduct:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → Code of Conduct
 
 ### How to Contribute
 
@@ -205,7 +207,7 @@ dart format lib/             # Formatted
 6. **Commit** with clear messages
 7. **Push** and create Pull Request
 
-**Complete workflow:** [CONTRIBUTING.md](./CONTRIBUTING.md) → PR Process
+**Complete workflow:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → PR Process
 
 ### Commit Messages
 
@@ -227,7 +229,7 @@ Implement latitude/longitude validation with bounds checking.
 Fixes #123
 ```
 
-**Details:** [CONTRIBUTING.md](./CONTRIBUTING.md) → Commit Guidelines
+**Details:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → Commit Guidelines
 
 ---
 
@@ -244,23 +246,23 @@ flutter build appbundle --release
 flutter build ios --release
 ```
 
-**Full guide:** [ARCHITECTURE.md](./ARCHITECTURE.md) → Deployment
+**Full guide:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Deployment
 
 ---
 
 ## Getting Help
 
-### Documentation Files (All at Root Level)
+### Documentation Files (in docs/)
 
 | File | Purpose |
 |------|---------|
-| [SETUP.md](./SETUP.md) | Environment setup & configuration |
-| [ARCHITECTURE.md](./ARCHITECTURE.md) | Code structure & patterns |
-| [CONTRIBUTING.md](./CONTRIBUTING.md) | Contribution & code standards |
-| [QUICK_REFERENCE.md](./QUICK_REFERENCE.md) | Quick lookup reference |
-| [PROJECT_OVERVIEW.md](./PROJECT_OVERVIEW.md) | Project vision |
-| [BUSINESS_MODEL.md](./BUSINESS_MODEL.md) | Business model |
-| [ROADMAP.md](./ROADMAP.md) | Development roadmap |
+| [docs/SETUP.md](./docs/SETUP.md) | Environment setup & configuration |
+| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Code structure & patterns |
+| [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) | Contribution & code standards |
+| [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md) | Quick lookup reference |
+| [docs/PROJECT_OVERVIEW.md](./docs/PROJECT_OVERVIEW.md) | Project vision |
+| [docs/BUSINESS_MODEL.md](./docs/BUSINESS_MODEL.md) | Business model |
+| [docs/ROADMAP.md](./docs/ROADMAP.md) | Development roadmap |
 
 ### External Resources
 
@@ -275,7 +277,7 @@ flutter build ios --release
 
 **Bug?** Open [GitHub Issue](https://github.com/asiimwe-dev/FarmLink-UG/issues) with details
 
-**Want to contribute?** Read [CONTRIBUTING.md](./CONTRIBUTING.md) first
+**Want to contribute?** Read [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) first
 
 ---
 
@@ -306,7 +308,7 @@ flutter devices              # List devices
 flutter doctor               # Check setup
 ```
 
-**More:** [QUICK_REFERENCE.md](./QUICK_REFERENCE.md)
+**More:** [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md)
 
 ---
 
@@ -322,7 +324,7 @@ flutter doctor               # Check setup
 - Local SQLite persistence
 - Background sync service
 
-📅 **Future Phases**: See [ROADMAP.md](./ROADMAP.md)
+📅 **Future Phases**: See [docs/ROADMAP.md](./docs/ROADMAP.md)
 
 ---
 
@@ -337,14 +339,14 @@ flutter doctor               # Check setup
 ## Next Steps
 
 1. ✅ Read this README
-2. 📖 Read [SETUP.md](./SETUP.md) for environment setup
-3. 🏗️ Read [ARCHITECTURE.md](./ARCHITECTURE.md) for code structure
-4. �� Start developing in `frontend/lib/`
-5. 📝 Follow [CONTRIBUTING.md](./CONTRIBUTING.md) when contributing
+2. 📖 Read [docs/SETUP.md](./docs/SETUP.md) for environment setup
+3. 🏗️ Read [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) for code structure
+4. 💻 Start developing in `frontend/lib/`
+5. 📝 Follow [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) when contributing
 
 ---
 
 **Last Updated**: May 2026  
 **Maintained By**: Farmer Hub UG Development Team
 
-**Questions?** See [CONTRIBUTING.md](./CONTRIBUTING.md) → Getting Help
+**Questions?** See [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → Getting Help
