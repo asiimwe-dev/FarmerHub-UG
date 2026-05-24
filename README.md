@@ -2,7 +2,7 @@
 
 > **Offline-First Agri-Intelligence Platform for East African Agricultural Cooperatives, Exporters, and Field Teams**
 
-[![GitHub](https://img.shields.io/badge/GitHub-FarmLink--UG-brightgreen?logo=github)](https://github.com/asiimwe-dev/FarmLink-UG)
+[![GitHub](https://img.shields.io/badge/GitHub-FarmerHub--UG-brightgreen?logo=github)](https://github.com/asiimwe-dev/FarmerHub-UG)
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-3.x-blue?logo=dart)](https://dart.dev)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
@@ -96,6 +96,8 @@ Farmer Hub UG provides an **offline-first, data-driven platform** that:
 
 ## 💻 Technology Stack
 
+### Frontend (Phase 1 - 2026)
+
 | Component | Technology | Version |
 |-----------|-----------|---------|
 | **Framework** | Flutter | 3.x |
@@ -107,12 +109,25 @@ Farmer Hub UG provides an **offline-first, data-driven platform** that:
 | **Sync** | Custom Background Service | v1 |
 | **Connectivity** | Connectivity Plus | latest |
 
+### Backend (Phase 2 - 2027)
+
+| Component | Technology | Version |
+|-----------|-----------|---------|
+| **Framework** | FastAPI | 0.104+ |
+| **Language** | Python | 3.10+ |
+| **Database** | PostgreSQL | 15+ |
+| **ORM** | SQLAlchemy | 2.x |
+| **Authentication** | JWT | Standard |
+| **Task Queue** | Celery | 5.x |
+| **Caching** | Redis | 7.x |
+| **Containerization** | Docker | latest |
+
 ---
 
 ## 🏗️ Project Structure
 
 ```
-FarmLink-UG/
+FarmerHub-UG/
 ├── 📄 README.md                    ← You are here
 ├── 📁 docs/
 │   ├── INDEX.md                    # Documentation navigation hub
@@ -123,7 +138,7 @@ FarmLink-UG/
 │   ├── PROJECT_OVERVIEW.md         # Project vision & strategy
 │   ├── BUSINESS_MODEL.md           # Revenue & business details
 │   └── ROADMAP.md                  # Development timeline
-├── 📁 frontend/
+├── 📁 frontend/                    # Flutter mobile app
 │   ├── 📁 lib/
 │   │   ├── main.dart               # App entry point
 │   │   ├── 📁 config/              # App configuration
@@ -132,6 +147,13 @@ FarmLink-UG/
 │   │   └── 📁 modules/             # Feature modules
 │   ├── 📁 test/                    # Test suite
 │   └── pubspec.yaml                # Dependencies
+├── 📁 backend/                     # FastAPI backend (Phase 2)
+│   ├── 📁 app/                     # Application logic
+│   ├── 📁 models/                  # Database models
+│   ├── 📁 api/                     # API routes
+│   ├── 📁 services/                # Business logic
+│   ├── 📁 tests/                   # Test suite
+│   └── requirements.txt            # Dependencies
 └── 📄 FARMCOM_CORE_VC_Business_Plan.pdf
 ```
 
@@ -151,8 +173,8 @@ FarmLink-UG/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/asiimwe-dev/FarmLink-UG.git
-cd FarmLink-UG/frontend
+git clone https://github.com/asiimwe-dev/FarmerHub-UG.git
+cd FarmerHub-UG/frontend
 
 # 2. Install dependencies
 flutter pub get
@@ -347,8 +369,8 @@ As we launch pilots in Q4 2026, we'll share:
 
 - **📖 Documentation** — [docs/INDEX.md](./docs/INDEX.md)
 - **❓ FAQ** — [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md)
-- **🐛 Report Issues** — [GitHub Issues](https://github.com/asiimwe-dev/FarmLink-UG/issues)
-- **💬 Discussions** — [GitHub Discussions](https://github.com/asiimwe-dev/FarmLink-UG/discussions)
+- **🐛 Report Issues** — [GitHub Issues](https://github.com/asiimwe-dev/FarmerHub-UG/issues)
+- **💬 Discussions** — [GitHub Discussions](https://github.com/asiimwe-dev/FarmerHub-UG/discussions)
 
 ### Team
 
