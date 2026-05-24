@@ -1,4 +1,4 @@
-# 🌾 Farmer Hub UG (FarmCom Core)
+# 🌾 FarmerHub UG
 
 **Offline-First Agri-Intelligence Platform for East African Agricultural Supply Chains**
 
@@ -11,7 +11,7 @@
 
 ## 🎯 Vision & Impact
 
-**Farmer Hub UG** (FarmCom Core) is a professional B2B agri-intelligence platform engineered to transform agricultural supply chains across Uganda and East Africa. By leveraging **offline-first** technology, we empower agricultural cooperatives, exporters, and lenders with high-fidelity field data, AI-driven yield forecasting, and export-grade traceability.
+**FarmerHub UG** is a professional B2B agri-intelligence platform engineered to transform agricultural supply chains across Uganda and East Africa. By leveraging **offline-first** technology, we empower agricultural cooperatives, exporters, and lenders with high-fidelity field data, AI-driven yield forecasting, and export-grade traceability.
 
 ### 🌍 Addressing Structural Supply Chain Friction
 - **Bridging the Connectivity Gap**: 30-40% of rural East Africa lacks reliable internet. Our platform ensures 100% functionality in deep rural zones.

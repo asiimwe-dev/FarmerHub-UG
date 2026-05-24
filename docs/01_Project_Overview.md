@@ -1,8 +1,8 @@
 # 01 Project Overview
 
-**FarmCom Core: B2B Agri-Intelligence Platform for East African Agriculture**
+**FarmerHub UG: B2B Agri-Intelligence Platform for East African Agriculture**
 
-> 📖 Strategic overview of the FarmCom Core project, its vision, target users, core capabilities, and positioning in the agricultural technology market.
+> 📖 Strategic overview of the FarmerHub UG project, its vision, target users, core capabilities, and positioning in the agricultural technology market.
 
 **Last Updated**: May 2026 | **Status**: ✅ MVP Phase | **Audience**: Stakeholders, Developers, Contributors
 
@@ -87,9 +87,9 @@ Create a world where every farmer, cooperative, and agribusiness in Uganda and E
 
 ## 💡 Solution Overview
 
-### What is FarmCom Core?
+### What is FarmerHub UG?
 
-FarmCom Core is an offline-first, B2B agri-intelligence platform comprising:
+FarmerHub UG is an offline-first, B2B agri-intelligence platform comprising:
 
 1. **Flutter Mobile Application** — Enabling farmers to record plot data (crop type, area, inputs) with robust offline functionality.
 2. **FastAPI Backend Intelligence Layer** — AI-powered predictions based on historical patterns, batch traceability, and cooperative aggregation.
@@ -116,274 +116,61 @@ Farmer Records Data  ──(Offline)──>  Auto-Sync  ───> FastAPI Intel
 
 ---
 
-## 👥 Target Users & Segments
+## 👥 Target Users & Persona Profiles
 
-### Primary Segments (MVP Phase)
+To ensure product-market fit, we design for specific high-impact personas within our target segments.
 
-#### 1. Cooperatives (Tier 1 Priority)
+### 1. The Cooperative Manager: "Moses"
+*   **Role**: Manager of a 400-member coffee cooperative in Mbale.
+*   **Goal**: Increase the average price per kg for his members by securing a Direct Trade contract with a European roaster.
+*   **Pain Point**: Spend 3 weeks every harvest season manually tallying paper records which are often inaccurate or missing GPS coordinates required by EUDR.
+*   **FarmerHub UG Value**: Moses uses the **Cooperative Dashboard** to view a real-time heatmap of harvest readiness and instantly exports a verified traceability ledger for his buyers.
 
-**Who**: Agricultural cooperatives with 50-500 member farmers
+### 2. The Field Agent: "Sarah"
+*   **Role**: Extension officer for a regional agricultural exporter.
+*   **Goal**: Visit 20 farms per week to verify pesticide usage and plot boundaries.
+*   **Pain Point**: Most farms are in zones with no 3G/4G coverage. Her previous digital tools crashed or lost data when she went offline.
+*   **FarmerHub UG Value**: Sarah uses the **Offline-First Field App** to map boundaries. Data is stored in a local reactive database and syncs automatically when she returns to town.
 
-**Problems They Face**:
-- Cannot aggregate member yields for group negotiations
-- Lack data to verify organic/fair trade practices
-- Spend weeks manually collecting paper records
-
-**How FarmCom Helps**:
-- Aggregate all member field data in one dashboard
-- Generate group yields and trends
-- Export documentation for certification
-- Understand member production capacity
-
-**Example**: UACU (Uganda Agro Chemicals Union) with 10,000 member farmers
-
-#### 2. Exporters (Tier 1 Priority)
-
-**Who**: Coffee, cocoa, tea exporters targeting EU/specialty markets
-
-**Problems They Face**:
-- EU buyers require complete crop traceability
-- Cannot provide origin documentation fast enough
-- Risk of contaminated batches affecting brand
-
-**How FarmCom Helps**:
-- Track crops from farm plot to export batch
-- Generate compliance documentation
-- Verify practices (pesticide use, timing, etc.)
-- Enable premium pricing for verified products
-
-**Example**: Export company selling Ugandan coffee to European roasters
-
-#### 3. Processors (Tier 2 Priority)
-
-**Who**: Crop processors (coffee drying, cocoa processing) aggregating from farmers
-
-**Problems They Face**:
-- Unknown crop source or handling quality
-- Cannot track which lots came from which farmers
-- Limited ability to trace back if quality issues arise
-
-**How FarmCom Helps**:
-- Link processor lots to farmer sources
-- Track quality metrics through processing
-- Trace contamination to specific farmer
-- Maintain audit trails for compliance
-
-#### 4. Lenders (Tier 2 Priority)
-
-**Who**: Agricultural microfinance institutions, banks, cooperatives
-
-**Problems They Face**:
-- Cannot assess farm-level risk (field size, crop type, inputs)
-- Default rates high due to poor crop tracking
-- Cannot verify how loans were used
-
-**How FarmCom Helps**:
-- Assess risk based on historical yields
-- Monitor crop progress through season
-- Verify loan use (seed purchase vs. personal use)
-- Adjust interest rates based on actual risk
-
-#### 5. Field Teams (Tier 3 Priority)
-
-**Who**: NGO extension officers, government agricultural officers
-
-**Problems They Face**:
-- Manually record data from farms, lose data in transit
-- Cannot aggregate insights from multiple visits
-- Limited data to inform recommendations
-
-**How FarmCom Helps**:
-- Record observations offline during farm visits
-- Sync data automatically for district-level aggregation
-- Generate reports on extension outreach
-- Track farmer progress toward recommendations
+### 3. The Institutional Buyer: "Hans"
+*   **Role**: Sourcing Lead for a German specialty coffee importer.
+*   **Goal**: Ensure 100% compliance with EU Deforestation Regulations (EUDR) to avoid heavy fines.
+*   **Pain Point**: Lack of granular, plot-level data makes it impossible to prove a batch didn't come from protected forest land.
+*   **FarmerHub UG Value**: Hans receives a **Batch Provenance Certificate** with polygon coordinates and time-stamped capture logs, providing legally defensible proof of origin.
 
 ---
 
-## ⚙️ Core Capabilities
+## ⚖️ Risk & Mitigation Ledger
 
-### Phase 1 (MVP) - Foundation
+As an enterprise-grade platform, we maintain a formal ledger of strategic risks.
 
-**User Management**
-- Role-based access (farmer, cooperative manager, processor, exporter, lender)
-- Secure login with offline token caching
-- User profile management
-
-**Field Capture**
-- Plot data entry: crop type, area, planting date, GPS location
-- Input tracking: seed, fertilizer, pesticide
-- Labor cost recording
-- Offline-first data persistence
-- GPS validation with accuracy feedback
-
-**Basic Sync**
-- Background sync service for queued data
-- Conflict resolution for concurrent edits
-- Retry logic for failed uploads
-- Sync status indicator in UI
-
-**Yield Recording**
-- Post-harvest yield entry
-- Yield unit support (kg, bags, tons)
-- Simple yield forecasting (historical average)
-- Yield trends over seasons
-
-### Phase 2 (Growth) - Intelligence
-
-**Advanced Forecasting**
-- ML-based yield prediction using weather, inputs, history
-- Seasonal trend analysis
-- Comparative analysis (your yield vs. cooperative average)
-- "What-if" scenarios (impact of input changes)
-
-**Traceability**
-- Batch aggregation (multiple plots → harvest batch → export lot)
-- Practice documentation (organic, fair trade, etc.)
-- Supply chain tracking (from farm → processor → exporter → buyer)
-- QR codes for batch identification
-
-**Cooperative Portal**
-- Dashboard for cooperative managers
-- Member yield aggregation
-- Group-level forecasting
-- Batch management for collective sales
-
-**Export Documentation**
-- Automated compliance reporting
-- Certification tracking
-- Batch history and provenance
-- Export readiness checklist
-
-### Phase 3 (Scale) - Ecosystem
-
-**Integrations**
-- Weather data integration (rainfall, temperature forecasts)
-- Market price feeds (commodity prices, buyer interest)
-- Logistics coordination (harvest collection, transport)
-- Financial services (insurance, lending, payment)
-
-**Analytics & BI**
-- Regional trends and benchmarking
-- Supply chain optimization
-- Buyer preferences and demand forecasting
-- Policy insights for government
-
-**Mobile + Web**
-- Web dashboard for processors/exporters/lenders
-- Advanced reporting and analytics
-- Bulk data operations
-- Multi-language support
+| Risk Category | Hazard Description | Probability | Impact | Mitigation Strategy |
+|:---|:---|:---:|:---:|:---|
+| **Adoption** | Low literacy among smallholder farmers hinders direct app use. | High | High | Focus on **Mediated Capture**: Field Agents and Coop Managers use the app *on behalf* of farmers. |
+| **Technical** | Sync conflicts when multiple agents edit the same plot data. | Med | Med | Implementation of **Causal Ordering** and **Idempotency Keys** in the Sync Gateway. |
+| **Regulatory** | Sudden changes in EUDR or regional data privacy laws (e.g., Uganda Data Protection Act). | Med | High | **Modular Compliance Engine**: Decouple business logic from reporting templates for rapid updates. |
+| **Connectivity** | Complete lack of hardware (smartphones) in specific rural corridors. | High | Med | **Device Financing Partnerships**: Bundling software with affordable hardware through NGO partners. |
 
 ---
 
-## 🌟 Key Differentiators
+## 📈 Strategic KPIs & Success Metrics
 
-### 1. Offline-First Architecture
-**Competitive Advantage**: Works without internet, enabling rural deployment where competitors can't reach
+The following metrics are tracked to measure platform health and market impact.
 
-### 2. Export-Grade Traceability
-**Competitive Advantage**: Meets EU, US compliance requirements; enables premium market access
+> 💡 **REAL-TIME DATA PLACEHOLDER**: Current month metrics are pulled from the *Analytics Engine* and should be updated here during monthly reviews.
 
-### 3. Multi-Stakeholder Ecosystem
-**Competitive Advantage**: Connects cooperatives, farmers, processors, exporters, lenders in single system
-
-### 4. Domain-Specific Intelligence
-**Competitive Advantage**: Purpose-built for agriculture; not a generic data collection tool
-
-### 5. Simple, Fast Implementation
-**Competitive Advantage**: Clean architecture enables rapid feature development and customization
-
----
-
-## 📱 Technology Positioning
-
-### Target Platforms
-- **Frontend**: Android (90% market in Uganda), iOS (urban professionals)
-- **Backend**: FastAPI (High-performance API layer)
-- **Data Storage**: PostgreSQL/PostGIS (Geospatial intelligence)
-
-### Technology Stack Advantages
-- **Flutter** — Cross-platform, fast time-to-market, excellent offline support
-- **FastAPI** — High-performance, modern Python framework for data-intensive apps
-- **Riverpod** — Scalable state management for complex features
-- **Background Sync** — Automatic data synchronization
-
-### Data Residency & Privacy
-- Data stored locally on device first
-- Optional cloud sync for backup and analytics
-- GDPR/CCPA compliant (data minimization, user control)
-- No selling of farmer data
-
----
-
-## 📊 Market Opportunity
-
-### Geographic Scope
-- **Phase 1**: Uganda (pilot with Ugandan cooperatives)
-- **Phase 2**: East Africa (Kenya, Tanzania, Rwanda, Ethiopia)
-- **Phase 3**: Sub-Saharan Africa
-
-### Target Market Size
-
-| Segment | Institutions | Farmers Reached | Est. Revenue |
-|---------|--------------|-----------------|--------------|
-| **Cooperatives** | 5,000 | 500,000 | $5-10M/year |
-| **Exporters** | 200+ | 50,000 | $3-5M/year |
-| **Processors** | 300+ | 75,000 | $2-3M/year |
-| **Lenders** | 50+ | 25,000 | $1-2M/year |
-| **Total** | | **650,000** | **$11-20M** |
-
-### Revenue Streams
-1. **Subscription** — Per-user or per-institution monthly fees
-2. **Compliance Certification** — Generate and verify export docs
-3. **Data Analytics** — Aggregated insights for buyers/lenders
-4. **Training & Support** — Implementation and feature training
-5. **Integrations** — APIs for external systems
-
----
-
-## 🎯 Go-to-Market Strategy
-
-### Phase 1: Uganda Pilot
-- Partner with 3-5 cooperatives for co-design
-- Free/subsidized deployment to build case studies
-- Generate testimonials and success metrics
-
-### Phase 2: East Africa Expansion
-- Replicate successful cooperative model
-- Add exporter/processor segments
-- Build distribution partnerships
-
-### Phase 3: Sub-Saharan Scale
-- Regional partnerships for deployment
-- Localization (languages, crops, units)
-- Integration with local systems (payments, weather, etc.)
-
----
-
-## 📈 Success Metrics
-
-### User Adoption
-- 1000+ farmers using app by end of Year 1
-- 10% monthly user growth
-- 80%+ monthly active user rate
-
-### Data Quality
-- 95%+ data completeness
-- <1% offline-sync conflicts
-- <0.1% data loss
-
-### Business Impact
-- Cooperatives negotiate 10%+ better prices
-- Exporters reduce quality issues by 50%
-- Lenders reduce default rates by 25%
+| Metric | Target (Year 1) | Current Status | Trend |
+|:---|:---:|:---:|:---:|
+| **MAU (Monthly Active Users)** | 1,000 | `[FETCHING...]` | 📈 |
+| **Data Integrity Score** | 99.5% | `[FETCHING...]` | ➖ |
+| **Verified Traceable Batches** | 500 | `[FETCHING...]` | 📈 |
+| **Avg. Sync Latency** | < 5s | `[FETCHING...]` | 📉 |
 
 ---
 
 ## 🛣️ Development Roadmap
 
-**See [09_Product_Roadmap.md](./09_Product_Roadmap.md) for detailed phase breakdown and timeline.**
+**See [10_Product_Roadmap.md](./10_Product_Roadmap.md) for detailed phase breakdown and timeline.**
 
 ---
 

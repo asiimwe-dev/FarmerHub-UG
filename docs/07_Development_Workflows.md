@@ -606,6 +606,28 @@ Paste relevant error logs or stack trace
 
 ---
 
+## 🚀 Release & Versioning Policy
+
+FarmCom Core follows a strict versioning and release schedule to ensure platform stability for our institutional partners.
+
+### 1. Semantic Versioning (SemVer)
+We adhere to `vMAJOR.MINOR.PATCH` formatting:
+*   **MAJOR**: Incompatible API changes or fundamental architectural shifts.
+*   **MINOR**: New features added in a backwards-compatible manner.
+*   **PATCH**: Backwards-compatible bug fixes.
+
+### 2. Branching Strategy
+*   **`main`**: Production-ready code. Only merged from `develop` via a Release PR.
+*   **`develop`**: Integration branch for features. All PRs target this branch.
+*   **`feature/*`**: Individual feature development.
+*   **`hotfix/*`**: Emergency fixes targeting `main` directly.
+
+### 3. Release Cadence
+*   **Beta/Staging Builds**: Triggered automatically on every merge to `develop`.
+*   **Production Releases**: Bi-weekly (every twond Tuesday), provided all QA checks pass.
+
+---
+
 ## ⚠️ Common Mistakes
 
 | Mistake | Fix |

@@ -1,6 +1,6 @@
-# 💼 FarmCom Core - Business Model
+# 02 Business Model
 
-**Revenue Strategy, Pricing, and Unit Economics for FarmCom Core**
+**Revenue Strategy, Pricing, and Unit Economics for FarmerHub UG**
 
 > 💰 Complete business model framework including revenue streams, pricing strategy, customer segments, and financial projections.
 
@@ -14,12 +14,13 @@
 2. [Revenue Model](#revenue-model)
 3. [Customer Segments & Pricing](#customer-segments--pricing)
 4. [Value Proposition](#value-proposition-by-segment)
-5. [Unit Economics](#unit-economics)
-6. [Go-to-Market Strategy](#go-to-market-strategy)
-7. [Financial Projections](#financial-projections)
-8. [Competitive Positioning](#competitive-positioning)
-9. [Key Assumptions](#key-assumptions)
-10. [Risk Mitigation](#risk-mitigation)
+5. [Institutional Positioning](#institutional-positioning)
+6. [Unit Economics](#unit-economics)
+7. [Go-to-Market Strategy](#go-to-market-strategy)
+8. [Financial Projections](#financial-projections)
+9. [Competitive Positioning](#competitive-positioning)
+10. [Key Assumptions](#key-assumptions)
+11. [Risk Mitigation](#risk-mitigation)
 
 ---
 
@@ -27,7 +28,7 @@
 
 ### Business Model Overview
 
-FarmCom Core uses a **multi-segment SaaS model** with:
+FarmerHub UG uses a **multi-segment SaaS model** with:
 - **Primary Revenue**: Subscription fees from cooperatives, processors, exporters
 - **Secondary Revenue**: Data analytics, compliance services, integrations
 - **Target Market**: Agricultural institutions and value chains in Uganda & East Africa
@@ -43,7 +44,7 @@ FarmCom Core uses a **multi-segment SaaS model** with:
 
 ---
 
-## �� Revenue Model
+## 💶 Revenue Model
 
 ### Four Revenue Streams
 
@@ -186,7 +187,7 @@ FarmCom Core uses a **multi-segment SaaS model** with:
 
 ### Cooperatives
 
-| Problem | Before FarmCom | After FarmCom |
+| Problem | Before FarmerHub UG | After FarmerHub UG |
 |---------|--------|---------|
 | **Data Fragmentation** | Paper records, 40% loss | Digital records, 100% capture |
 | **Negotiating Power** | No data on production | Aggregate yields by crop/member |
@@ -197,7 +198,7 @@ FarmCom Core uses a **multi-segment SaaS model** with:
 
 ### Exporters
 
-| Problem | Before FarmCom | After FarmCom |
+| Problem | Before FarmerHub UG | After FarmerHub UG |
 |---------|--------|---------|
 | **Compliance** | Cannot provide traceability | Full audit trail available |
 | **Quality Issues** | Unknown source, lose 5-8% | Trace to specific farmer |
@@ -208,7 +209,7 @@ FarmCom Core uses a **multi-segment SaaS model** with:
 
 ### Processors
 
-| Problem | Before FarmCom | After FarmCom |
+| Problem | Before FarmerHub UG | After FarmerHub UG |
 |---------|--------|---------|
 | **Quality Assurance** | No lot traceability | Track quality metrics per lot |
 | **Contamination** | Entire batch lost | Isolate affected lots only |
@@ -218,13 +219,28 @@ FarmCom Core uses a **multi-segment SaaS model** with:
 
 ### Lenders
 
-| Problem | Before FarmCom | After FarmCom |
+| Problem | Before FarmerHub UG | After FarmerHub UG |
 |---------|--------|---------|
 | **Risk Assessment** | Based on guesswork | Historical yield and input data |
 | **Default Rates** | 8-12% default rate | 3-5% default rate (40% reduction) |
 | **Loan Monitoring** | Cannot track use | Real-time crop progress monitoring |
 
 **ROI**: Reduce 100K portfolio from 10% to 5% defaults = $50K savings on 1000 farmer portfolio
+
+---
+
+## 🏛️ Institutional Positioning
+
+FarmerHub UG Core is not just a tool; it is a **B2B2C Trust Infrastructure**.
+
+### 1. The "Single Source of Truth"
+In the fragmented East African market, we position ourselves as the definitive source for field-level data. By providing a common data standard, we enable disparate entities (e.g., a Cooperative in Mbale and a Bank in Kampala) to collaborate with zero data friction.
+
+### 2. Market Defensibility: The "Traceability Moat"
+As global regulations like EUDR tighten, the cost of *not* having FarmerHub UG increases. We are positioning the platform as a **mandatory compliance utility** for any exporter selling into high-value Western markets.
+
+### 3. Data Philanthropy vs. Data Sovereignty
+Unlike generic data collectors, we champion **Farmer Data Sovereignty**. We provide institutions with the analytics they need while ensuring that the underlying data remains a valuable asset for the farmer and their cooperative.
 
 ---
 
@@ -375,7 +391,7 @@ Year 5: $10M+
 
 ### vs. Generic Data Collection (Commcare, Magpi)
 
-| Feature | Generic | FarmCom |
+| Feature | Generic | FarmerHub UG |
 |---------|---------|---------|
 | **Offline-First** | ✓ | ✓✓✓ |
 | **Agri-Specific** | ✗ | ✓✓✓ |
@@ -385,7 +401,7 @@ Year 5: $10M+
 
 ### vs. Agri-Tech Platforms (DigiFarm, Apollo, Farmcrowdy)
 
-| Feature | Competitors | FarmCom |
+| Feature | Competitors | FarmerHub UG |
 |---------|-------------|---------|
 | **Offline-First** | ✗ (requires internet) | ✓✓✓ |
 | **Export Traceability** | ✗ | ✓✓✓ |
@@ -459,7 +475,7 @@ Year 5: $10M+
 
 ---
 
-**✅ Business model validates FarmCom Core addresses real market needs with sustainable pricing.**
+**✅ Business model validates FarmerHub UG Core addresses real market needs with sustainable pricing.**
 
 **📊 For technical roadmap, see [10_Product_Roadmap.md](./10_Product_Roadmap.md)**
 

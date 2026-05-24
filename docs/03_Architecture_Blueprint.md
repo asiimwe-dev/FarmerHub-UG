@@ -722,6 +722,27 @@ Future<T> retryAsync<T>(
 
 ---
 
+## 🛡️ Security & Privacy Posture
+
+FarmCom Core handles sensitive agricultural and geospatial data. Our security model is built on **Zero Trust** principles.
+
+### 1. Data Encryption
+*   **At Rest (On-Device)**: SQLite databases are encrypted using **SQLCipher** (256-bit AES) to prevent unauthorized access if a device is stolen.
+*   **At Rest (Cloud)**: PostgreSQL data volumes use AWS/Azure native disk encryption.
+*   **In Transit**: All API communication is enforced via **TLS 1.3**. Self-signed certificates are strictly rejected in production.
+
+### 2. Identity & Access Management (IAM)
+*   **Authentication**: OAuth 2.0 with JWT. Tokens have a short TTL (1 hour) with secure Refresh Token rotation.
+*   **RBAC**: Granular permissions ensure a Field Agent cannot view financial data intended for a Cooperative Manager.
+*   **Device Binding**: Authorized devices must be registered with the organization's tenant to prevent rogue API access.
+
+### 3. Privacy & Compliance
+*   **Data Minimization**: We only capture coordinates necessary for plot boundary verification.
+*   **Right to be Forgotten**: Standardized procedures for farmers to request deletion of their plot data, compliant with the **Uganda Data Protection and Privacy Act**.
+*   **Geo-Fencing**: API requests are validated against known regional IP ranges to detect and block suspicious cross-border access attempts.
+
+---
+
 ## 🔍 Troubleshooting
 
 ### Issue: Circular dependency between layers

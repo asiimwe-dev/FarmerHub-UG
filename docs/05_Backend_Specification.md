@@ -15,7 +15,8 @@
 5. [Predictive Yield Modeling Engine](#predictive-yield-modeling-engine)
 6. [Security & Authentication](#security--authentication)
 7. [Integration & Sync Gateway](#integration--sync-gateway)
-8. [Deployment & Infrastructure](#deployment--infrastructure)
+8. [Observability & Reliability](#observability--reliability)
+9. [Deployment & Infrastructure](#deployment--infrastructure)
 
 ---
 
@@ -118,6 +119,26 @@ The backend acts as the source of truth for the **Synchronization Gateway**:
 1.  **Idempotency**: All sync operations use idempotent keys to prevent duplicate records.
 2.  **Conflict Resolution**: Server-side logic to handle multi-device updates on the same plot.
 3.  **Delta Sync**: Mobile devices only receive changes since their last successful sync to save data costs.
+
+---
+
+## 📊 Observability & Reliability
+
+To maintain a 99.9% SLA, the backend implements a tiered monitoring and recovery strategy.
+
+### 1. Monitoring & Tracing
+*   **Structured Logging**: All logs are emitted in JSON format for ingestion by ELK/Loki.
+*   **APM (Application Performance Monitoring)**: **Sentry** is used for real-time error tracking and performance profiling.
+*   **Metrics**: **Prometheus** scrapes system-level (CPU/RAM) and application-level (Request Count, P99 Latency) metrics, visualized in **Grafana**.
+
+### 2. Reliability Patterns
+*   **Circuit Breakers**: Used when calling external weather or satellite APIs to prevent cascading failures.
+*   **Rate Limiting**: Leaky bucket algorithm implemented at the gateway level to prevent API abuse.
+*   **Dead Letter Queues (DLQ)**: Failed Celery tasks are moved to a DLQ for manual inspection and replay.
+
+### 3. Data Durability
+*   **Point-in-Time Recovery (PITR)**: Enabled for PostgreSQL to allow restoration to any second within the last 30 days.
+*   **Redundant Broker**: Redis is configured in a Cluster mode to ensure no task is lost during a node failure.
 
 ---
 
