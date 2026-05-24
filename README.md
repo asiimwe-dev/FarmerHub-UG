@@ -1,352 +1,405 @@
-# Farmer Hub UG - Documentation
+# 🌾 Farmer Hub UG
 
-Welcome to **Farmer Hub UG**, a professional B2B agri-intelligence platform for cooperatives, exporters, and field teams across East Africa.
+> **Offline-First Agri-Intelligence Platform for East African Agricultural Cooperatives, Exporters, and Field Teams**
 
-## Quick Navigation
-
-| I want to... | Read this |
-|---|---|
-| **Get started developing** | → [docs/SETUP.md](./docs/SETUP.md) |
-| **Understand the codebase** | → [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) |
-| **Contribute code** | → [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) |
-| **See project vision** | → [docs/PROJECT_OVERVIEW.md](./docs/PROJECT_OVERVIEW.md) |
-| **Understand business model** | → [docs/BUSINESS_MODEL.md](./docs/BUSINESS_MODEL.md) |
-| **Check development roadmap** | → [docs/ROADMAP.md](./docs/ROADMAP.md) |
-| **Quick developer reference** | → [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md) |
+[![GitHub](https://img.shields.io/badge/GitHub-FarmLink--UG-brightgreen?logo=github)](https://github.com/asiimwe-dev/FarmLink-UG)
+[![Flutter](https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-3.x-blue?logo=dart)](https://dart.dev)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-MVP-orange)]()
 
 ---
 
-## What is Farmer Hub UG?
+## 🎯 What is Farmer Hub UG?
 
-**Farmer Hub UG** is an offline-first agri-intelligence platform transforming agricultural supply chains in Uganda and East Africa.
+**Farmer Hub UG** (FarmCom Core) is a professional B2B agri-intelligence platform transforming agricultural supply chains across Uganda and East Africa. Built with Flutter, it provides **offline-first** field data capture, yield forecasting, and export-grade traceability for agricultural stakeholders.
 
-**For Cooperatives** — Aggregate member data, track yields, plan logistics  
-**For Processors** — Trace raw material provenance, ensure compliance  
-**For Exporters** — Generate export-grade traceability documentation  
-**For Lenders** — Assess risk with yield history and land data  
-**For Field Teams** — Capture data offline, sync when connected  
+### For Every Player in the Value Chain
 
-### Core Philosophy
-
-- 📱 **Offline-First** — Full functionality without internet
-- 🌾 **Domain-Specific** — Built for agricultural stakeholders  
-- 🔄 **Sync-Ready** — Automatic background synchronization
-- 🛡️ **Enterprise-Grade** — Professional code quality and security
-- 📊 **Data-Driven** — Yield forecasting and predictive analytics
-
-**Learn more:** See [docs/PROJECT_OVERVIEW.md](./docs/PROJECT_OVERVIEW.md)
+| Role | Benefits |
+|------|----------|
+| 🌾 **Farmers** | Record field data offline, get yield forecasts, track history |
+| 🤝 **Cooperatives** | Aggregate member data, negotiate better prices, generate documentation |
+| 🏭 **Processors** | Track crop provenance, ensure quality, trace contamination |
+| 📦 **Exporters** | Generate EU-compliant traceability docs, access premium markets |
+| 💰 **Lenders** | Assess risk with real yield data, monitor loans in real-time |
 
 ---
 
-## Quick Start
+## 🚀 Why Farmer Hub UG?
 
-### 5 Minutes to Running
+### The Problem
 
-```bash
-git clone https://github.com/asiimwe-dev/FarmLink-UG.git
-cd FarmLink-UG/frontend
-flutter pub get
-flutter analyze  # Should show 0 issues
-flutter test     # All tests pass
-flutter run
-```
+Agricultural stakeholders in Uganda and East Africa face critical challenges:
 
-### Complete Setup Guide
+- 📋 **Data Fragmentation** — Farmers use paper, cooperatives lose records, exporters can't verify origins
+- 📱 **Connectivity Gaps** — 30-40% of rural areas lack consistent internet; farmers can't upload data
+- 📊 **No Intelligence** — Decisions made on guesswork, not data; missed yield optimization opportunities
+- 📋 **Compliance Burden** — Exporters struggle with traceability documentation; miss high-value markets
+- 💳 **Credit Risk** — Lenders assess risk without field-level data; miss lending opportunities
 
-**→ [See docs/SETUP.md](./docs/SETUP.md) for full environment setup instructions**
+### The Solution
 
-Includes:
-- Prerequisites (Flutter, Git, IDE)
-- IDE configuration (VS Code, Android Studio)
-- Emulator setup
-- Debugging tools
-- Common troubleshooting
+Farmer Hub UG provides an **offline-first, data-driven platform** that:
+
+✅ **Works Without Internet** — Full functionality offline; auto-syncs when connected  
+✅ **Captures Field Data** — GPS-validated plot information, crop types, inputs, yields  
+✅ **Forecasts Yields** — AI-powered predictions based on historical patterns  
+✅ **Traces Crops** — End-to-end tracking from farm to export  
+✅ **Aggregates Data** — Cooperative-level insights for collective negotiations  
+✅ **Generates Compliance Docs** — Export-ready documentation for EU/US markets  
 
 ---
 
-## Project Structure
+## ✨ Key Features
+
+### 📱 Offline-First Architecture
+- **Works anywhere** — No internet required for core functionality
+- **Auto-sync** — Background synchronization when connected
+- **Zero data loss** — Local backup before any cloud operation
+
+### 🌾 Field Capture
+- Plot data entry with GPS validation
+- Crop type and area recording
+- Input tracking (seeds, fertilizers, pesticides)
+- Labor cost documentation
+- Completely offline capable
+
+### 📊 Yield Intelligence
+- Yield recording (post-harvest)
+- Historical yield tracking
+- Season-over-season trend analysis
+- AI-powered forecasting (coming Phase 2)
+- What-if scenario planning (future)
+
+### 🔗 Traceability
+- Batch aggregation from multiple plots
+- Complete audit trails
+- QR codes for batch identification
+- Export documentation generation
+- EU compliance ready
+
+### 🤝 Cooperative Portal
+- Member data aggregation (Phase 2)
+- Group yield analytics
+- Collective sales management
+- Documentation for certifications
+
+### 🛡️ Enterprise Grade
+- Clean architecture with strict layer separation
+- Comprehensive error handling
+- Input validation on all data
+- Secure token management
+- Professional code standards
+
+---
+
+## 💻 Technology Stack
+
+| Component | Technology | Version |
+|-----------|-----------|---------|
+| **Framework** | Flutter | 3.x |
+| **Language** | Dart | 3.x |
+| **State Management** | Riverpod | 2.x |
+| **Routing** | GoRouter | 13.x |
+| **HTTP Client** | Dio | 5.x |
+| **Local Storage** | SQLite | via sqflite |
+| **Sync** | Custom Background Service | v1 |
+| **Connectivity** | Connectivity Plus | latest |
+
+---
+
+## 🏗️ Project Structure
 
 ```
 FarmLink-UG/
-├── README.md                           ← You are here
-├── docs/                               ← ALL DOCUMENTATION
-│   ├── SETUP.md                        # Environment setup
-│   ├── ARCHITECTURE.md                 # Code structure & patterns
-│   ├── CONTRIBUTING.md                 # Contribution guide & CoC
-│   ├── QUICK_REFERENCE.md              # Developer shortcuts
-│   ├── PROJECT_OVERVIEW.md             # Business vision
-│   ├── BUSINESS_MODEL.md               # Revenue model
-│   ├── ROADMAP.md                      # Development phases
-│   └── archive/                        # Legacy documentation
-├── frontend/
-│   ├── lib/
-│   │   ├── main.dart
-│   │   ├── config/                     # Constants & config
-│   │   ├── core/                       # Shared infrastructure
-│   │   │   ├── exceptions/             # Error hierarchy
-│   │   │   ├── validators/             # Input validation  
-│   │   │   ├── extensions/             # Utility extensions
-│   │   │   └── ...
-│   │   ├── app/                        # Shell & routing
-│   │   └── modules/                    # Feature modules
-│   ├── test/                           # Test suite
-│   └── pubspec.yaml                    # Dependencies
-└── FARMCOM_CORE_VC_Business_Plan.pdf   # Business plan reference
+├── 📄 README.md                    ← You are here
+├── 📁 docs/
+│   ├── INDEX.md                    # Documentation navigation hub
+│   ├── SETUP.md                    # Environment setup guide
+│   ├── ARCHITECTURE.md             # Code structure & patterns
+│   ├── CONTRIBUTING.md             # Contribution guidelines
+│   ├── QUICK_REFERENCE.md          # Developer shortcuts
+│   ├── PROJECT_OVERVIEW.md         # Project vision & strategy
+│   ├── BUSINESS_MODEL.md           # Revenue & business details
+│   └── ROADMAP.md                  # Development timeline
+├── 📁 frontend/
+│   ├── 📁 lib/
+│   │   ├── main.dart               # App entry point
+│   │   ├── 📁 config/              # App configuration
+│   │   ├── 📁 core/                # Shared infrastructure
+│   │   ├── 📁 app/                 # App shell & routing
+│   │   └── 📁 modules/             # Feature modules
+│   ├── 📁 test/                    # Test suite
+│   └── pubspec.yaml                # Dependencies
+└── 📄 FARMCOM_CORE_VC_Business_Plan.pdf
 ```
 
-**See:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Directory Structure
+**See [docs/INDEX.md](./docs/INDEX.md) for complete documentation navigation**
 
 ---
 
-## Key Features
+## ⚡ Quick Start
 
-### 1. Offline-First Architecture
-- Complete functionality without connectivity
-- Automatic local storage
-- Background sync when reconnected
+### Prerequisites
+- Flutter 3.13+ and Dart 3.1+
+- Git
+- Android Studio / Xcode (for emulator/simulator)
+- 8 GB RAM minimum
 
-**Learn more:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Offline-First Architecture
-
-### 2. Field Data Capture
-- GPS-enabled plot entry
-- Crop and yield data
-- Offline form submission
-
-**Learn more:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Modules
-
-### 3. Data Synchronization
-- Queue-based background sync
-- Exponential backoff on failures
-- Batch processing
-
-**Learn more:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Data Synchronization
-
-### 4. Traceability
-- Batch provenance tracking
-- Export-grade compliance
-- Historical versioning
-
-### 5. Yield Forecasting
-- Predictive analytics
-- Risk assessment
-- Recommendations
-
-**See roadmap:** [docs/ROADMAP.md](./docs/ROADMAP.md)
-
----
-
-## Technology Stack
-
-### Frontend
-- **Framework**: Flutter 3.x
-- **Language**: Dart  
-- **State Management**: Riverpod 2.x
-- **Routing**: GoRouter 13.x
-- **HTTP**: Dio 5.x
-- **Database**: SQLite (local)
-- **Connectivity**: Connectivity Plus
-
-**Full details:** [docs/SETUP.md](./docs/SETUP.md) → Technology Stack
-
----
-
-## Development Guide
-
-### Code Quality
-
-All code must pass:
+### Setup (5 Minutes)
 
 ```bash
-flutter analyze              # 0 issues
-flutter test                 # All pass
-dart format lib/             # Formatted
+# 1. Clone the repository
+git clone https://github.com/asiimwe-dev/FarmLink-UG.git
+cd FarmLink-UG/frontend
+
+# 2. Install dependencies
+flutter pub get
+
+# 3. Verify setup
+flutter doctor        # Should show 0 issues
+flutter analyze       # Should show 0 issues
+
+# 4. Run the app
+flutter run
+
+# 5. During development
+# Press 'r' for hot reload
+# Press 'R' for hot restart
+# Press 'q' to quit
 ```
 
-**Details:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → Code Standards
-
-### Common Tasks
-
-| Task | Reference |
-|------|-----------|
-| Add new feature | [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md) → Workflows |
-| Write tests | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Testing |
-| Add page | [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md) → New Page |
-| Handle errors | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Error Handling |
-| Validate input | [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md) → Validation |
-
-**Full guide:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)
-
-### Code Standards
-
-- **Architecture**: Clean Architecture (domain/data/presentation)
-- **Naming**: PascalCase (classes), snake_case (files)
-- **Errors**: Explicit typed exceptions (no silent failures)
-- **Testing**: 90%+ coverage for business logic
-- **Docs**: Public APIs documented with `///`
-
-**See:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → Code Standards
+**📖 For complete setup details:** [docs/SETUP.md](./docs/SETUP.md)
 
 ---
 
-## Contribution Guidelines
+## 📖 Documentation
+
+All documentation is organized in the **[docs/](./docs/)** folder with a navigation hub:
+
+| Document | Purpose |
+|----------|---------|
+| **[docs/INDEX.md](./docs/INDEX.md)** | 📚 Documentation navigation and index |
+| **[docs/SETUP.md](./docs/SETUP.md)** | 🚀 Development environment setup (15 minutes) |
+| **[docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)** | 🏗️ Codebase structure and design patterns |
+| **[docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md)** | ⚡ Quick developer reference and shortcuts |
+| **[docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md)** | 🤝 Contribution guidelines and code of conduct |
+| **[docs/PROJECT_OVERVIEW.md](./docs/PROJECT_OVERVIEW.md)** | 🎯 Project vision, market, and strategy |
+| **[docs/BUSINESS_MODEL.md](./docs/BUSINESS_MODEL.md)** | 💼 Revenue model and unit economics |
+| **[docs/ROADMAP.md](./docs/ROADMAP.md)** | 🛣️ Development roadmap 2026-2031 |
+
+**Start here:** [docs/INDEX.md](./docs/INDEX.md) — Complete documentation navigation
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Whether you're fixing bugs, adding features, or improving documentation:
+
+1. **Read our Code of Conduct** — [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md#code-of-conduct)
+2. **Understand our Development Workflow** — [docs/CONTRIBUTING.md#development-workflow](./docs/CONTRIBUTING.md#development-workflow)
+3. **Follow Code Standards** — [docs/CONTRIBUTING.md#code-standards](./docs/CONTRIBUTING.md#code-standards)
+4. **Submit a Pull Request** — [docs/CONTRIBUTING.md#pull-request-process](./docs/CONTRIBUTING.md#pull-request-process)
+
+**Quick start for contributors:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md)
 
 ### Code of Conduct
 
-✅ **Be Respectful, Collaborative, Accountable**  
-❌ **No Harassment, Plagiarism, or Conflicts of Interest**
+We are committed to providing a welcoming and inclusive community. All contributors must:
 
-**Full conduct:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → Code of Conduct
+✅ **Be Respectful** — Treat team members with professionalism  
+✅ **Be Collaborative** — Share knowledge and help others  
+✅ **Be Accountable** — Own your code and its quality  
+✅ **Be Professional** — Focus on technical merit and constructive feedback  
 
-### How to Contribute
-
-1. **Fork** repository on GitHub
-2. **Clone** your fork locally
-3. **Create branch** (`git checkout -b feature/xyz`)
-4. **Make changes** following code standards
-5. **Test thoroughly** (`flutter test`, `flutter analyze`)
-6. **Commit** with clear messages
-7. **Push** and create Pull Request
-
-**Complete workflow:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → PR Process
-
-### Commit Messages
-
-Format:
-```
-<type>(<scope>): <subject>
-
-<body>
-
-<footer>
-```
-
-Example:
-```
-feat(field-capture): Add GPS validation
-
-Implement latitude/longitude validation with bounds checking.
-
-Fixes #123
-```
-
-**Details:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → Commit Guidelines
+[View full Code of Conduct](./docs/CONTRIBUTING.md#code-of-conduct)
 
 ---
 
-## Deployment
+## 🎯 Project Vision
 
-### Build for Production
+### Mission
 
-```bash
-# Android
-flutter build apk --release
-flutter build appbundle --release
+Transform agricultural supply chains in East Africa through offline-first intelligence, enabling cooperatives, exporters, and lenders to make data-driven decisions while serving smallholder farmers.
 
-# iOS  
-flutter build ios --release
+### Vision
+
+Create a world where every farmer, cooperative, and agribusiness in Uganda and East Africa has access to enterprise-grade agricultural intelligence tools, regardless of connectivity.
+
+### Core Values
+
+- 🌾 **Farmer-First** — Solutions designed with smallholder farmers' needs foremost
+- 📊 **Data-Driven** — Decisions backed by accurate, traceable agricultural data
+- 🌐 **Accessible** — Technology works without internet, for everyone
+- 🤝 **Collaborative** — Ecosystems connecting farmers, cooperatives, buyers, and lenders
+- 🔒 **Trustworthy** — Transparent, secure, and ethical data practices
+
+**Learn more:** [docs/PROJECT_OVERVIEW.md](./docs/PROJECT_OVERVIEW.md)
+
+---
+
+## 📊 Business Model
+
+Farmer Hub UG is built on a **sustainable, multi-segment SaaS model**:
+
+### Revenue Streams
+
+| Stream | Target | Pricing |
+|--------|--------|---------|
+| **Subscriptions** | Institutions (cooperatives, exporters, processors, lenders) | $100-1500/month |
+| **Compliance Services** | Export documentation, certification | $50-500 per service |
+| **Data & Analytics** | Aggregated insights and trends | $1000-5000/year |
+| **Integrations** | API access and custom development | $200+/month |
+
+### Market Opportunity
+
+- **Target Market**: 650,000+ farmers across cooperatives, exporters, processors
+- **Revenue Potential**: $11-20M annually at scale
+- **Timeline**: Profitability by Year 3
+
+**Full details:** [docs/BUSINESS_MODEL.md](./docs/BUSINESS_MODEL.md)
+
+---
+
+## 🛣️ Development Roadmap
+
+### Phase 1: MVP Foundation (2026) ✅ In Progress
+- ✅ User authentication with offline caching
+- ✅ Field capture with GPS validation
+- ✅ Basic yield recording and simple forecasting
+- ✅ Background sync service
+- 🔄 Initial cooperative pilot launch
+
+### Phase 2: Intelligence Layer (2027)
+- Advanced yield forecasting with ML
+- Batch traceability module
+- Exporter dashboard and compliance docs
+- Scale to 50+ institutions
+
+### Phase 3: Ecosystem Integration (2028)
+- Processor portal
+- Lender risk scoring platform
+- Web dashboard
+- Regional expansion
+
+### Phase 4: Regional Scale (2029-2030)
+- Expand to Kenya, Tanzania, Rwanda, Ethiopia
+- Localization and regional partnerships
+- 200K+ active users
+
+### Phase 5: Global Platform (2031+)
+- Sub-Saharan Africa expansion
+- Advanced integrations (payments, weather, logistics)
+- Ecosystem marketplace
+
+**Full roadmap:** [docs/ROADMAP.md](./docs/ROADMAP.md)
+
+---
+
+## 📱 How It Works
+
+### For Farmers
+
 ```
-
-**Full guide:** [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) → Deployment
-
----
-
-## Getting Help
-
-### Documentation Files (in docs/)
-
-| File | Purpose |
-|------|---------|
-| [docs/SETUP.md](./docs/SETUP.md) | Environment setup & configuration |
-| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Code structure & patterns |
-| [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) | Contribution & code standards |
-| [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md) | Quick lookup reference |
-| [docs/PROJECT_OVERVIEW.md](./docs/PROJECT_OVERVIEW.md) | Project vision |
-| [docs/BUSINESS_MODEL.md](./docs/BUSINESS_MODEL.md) | Business model |
-| [docs/ROADMAP.md](./docs/ROADMAP.md) | Development roadmap |
-
-### External Resources
-
-- [Flutter Docs](https://flutter.dev/docs)
-- [Dart Language Tour](https://dart.dev/guides/language/language-tour)
-- [Riverpod Docs](https://riverpod.dev)
-- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
-
-### Support
-
-**Questions?** Check docs first, then open [GitHub Discussion](https://github.com/asiimwe-dev/FarmLink-UG/discussions)
-
-**Bug?** Open [GitHub Issue](https://github.com/asiimwe-dev/FarmLink-UG/issues) with details
-
-**Want to contribute?** Read [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) first
-
----
-
-## Quick Commands
-
-```bash
-# Setup
-flutter pub get              # Install dependencies
-
-# Development
-flutter run                  # Run debug
-flutter run --release        # Run release
-
-# Quality
-flutter analyze              # Static analysis
-flutter test                 # Run tests
-flutter test --coverage      # With coverage
-dart format lib/             # Format code
-
-# Build
-flutter build apk --release  # Android APK
-flutter build appbundle      # Play Store
-flutter build ios --release  # iOS
-
-# Debugging
-flutter logs                 # Device logs
-flutter devices              # List devices
-flutter doctor               # Check setup
+1. Install app on smartphone
+2. Record field data offline (name, area, crop, date)
+3. Enter yield at harvest
+4. App auto-syncs data when connected
+5. View forecasts and recommendations
+6. Receive cooperative communications
 ```
 
-**More:** [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md)
+### For Cooperatives
+
+```
+1. Add members to platform
+2. Monitor all member field data in dashboard
+3. Aggregate member yields for group analytics
+4. Generate export documentation
+5. Negotiate with buyers with real data
+```
+
+### For Exporters
+
+```
+1. Connect to cooperative suppliers
+2. Track incoming batches and quality
+3. Generate EU-compliant traceability docs
+4. Verify practices (organic, fair trade, etc.)
+5. Access premium markets with proof
+```
 
 ---
 
-## Project Status
+## 🏆 Success Stories (Coming Soon)
 
-✅ **Phase 1: MVP Frontend**  
-- Core architecture complete
-- Field capture skeleton ready
-- Professional codebase standards
-
-⏳ **Phase 2: Feature Development**  
-- Complete field_capture module
-- Local SQLite persistence
-- Background sync service
-
-📅 **Future Phases**: See [docs/ROADMAP.md](./docs/ROADMAP.md)
+As we launch pilots in Q4 2026, we'll share:
+- Cooperative case studies (yield improvements, price increases)
+- Exporter testimonials (market access, compliance success)
+- Farmer benefits (data-driven decisions, better yields)
 
 ---
 
-## Repository
+## 📞 Support & Contact
 
-- **GitHub**: [FarmerHub-UG](https://github.com/asiimwe-dev/FarmLink-UG)
-- **Issues**: [GitHub Issues](https://github.com/asiimwe-dev/FarmLink-UG/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/asiimwe-dev/FarmLink-UG/discussions)
+### Getting Help
+
+- **📖 Documentation** — [docs/INDEX.md](./docs/INDEX.md)
+- **❓ FAQ** — [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md)
+- **🐛 Report Issues** — [GitHub Issues](https://github.com/asiimwe-dev/FarmLink-UG/issues)
+- **💬 Discussions** — [GitHub Discussions](https://github.com/asiimwe-dev/FarmLink-UG/discussions)
+
+### Team
+
+- **Project Lead** — [@asiimwe-dev](https://github.com/asiimwe-dev)
+- **Documentation** — See [docs/](./docs/)
+- **Contributing** — See [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md)
 
 ---
 
-## Next Steps
+## 📄 License
 
-1. ✅ Read this README
-2. 📖 Read [docs/SETUP.md](./docs/SETUP.md) for environment setup
-3. 🏗️ Read [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) for code structure
-4. 💻 Start developing in `frontend/lib/`
-5. 📝 Follow [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) when contributing
+Farmer Hub UG is licensed under the **MIT License**. See [LICENSE](./LICENSE) file for details.
 
 ---
 
-**Last Updated**: May 2026  
-**Maintained By**: Farmer Hub UG Development Team
+## 🙏 Acknowledgments
 
-**Questions?** See [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) → Getting Help
+Farmer Hub UG was born from a vision to transform agricultural supply chains in East Africa. We acknowledge:
+
+- The smallholder farmers of Uganda who inspired this platform
+- Agricultural cooperatives and their leaders
+- The global agri-tech community for knowledge and inspiration
+- Open-source projects that make this possible (Flutter, Riverpod, etc.)
+
+---
+
+## 🚀 Next Steps
+
+**New Developer?**  
+→ Start with [docs/SETUP.md](./docs/SETUP.md) (15 minutes to first run)
+
+**Want to Contribute?**  
+→ Read [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) (complete workflow guide)
+
+**Understand the Code?**  
+→ Study [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) (codebase structure)
+
+**Need Quick Reference?**  
+→ Bookmark [docs/QUICK_REFERENCE.md](./docs/QUICK_REFERENCE.md) (common tasks)
+
+**Interested in the Business?**  
+→ Read [docs/PROJECT_OVERVIEW.md](./docs/PROJECT_OVERVIEW.md) and [docs/BUSINESS_MODEL.md](./docs/BUSINESS_MODEL.md)
+
+---
+
+**Made with ❤️ for East African farmers, cooperatives, and the agricultural ecosystem.**
+
+🌾 **Together, we're building the future of agriculture in Uganda and East Africa.** 🚀
+
+---
+
+**Documentation Hub**: [docs/INDEX.md](./docs/INDEX.md) — Complete navigation and index
+
+**Last Updated**: May 2026 | **Status**: MVP Phase | **Version**: 1.0
