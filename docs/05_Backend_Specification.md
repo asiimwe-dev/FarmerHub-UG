@@ -1,153 +1,86 @@
 # 05 Backend Specification
 
-**Core Engineering Blueprint for the FarmerHub Core Backend Infrastructure**
+**Agri-RegTech Intelligence & Compliance Infrastructure**
 
-> 🛠️ This document outlines the technical specification for the FarmerHub Core backend. While the project is currently in the frontend-focused MVP phase, this specification defines the target architecture, technology stack, and implementation plan for the centralized intelligence layer.
+> 🛠️ Technical specification for the FarmerHub Core backend, optimized for geospatial queries, predictive yield modeling, and national regulatory integration.
 
 ---
 
 ## 📋 Table of Contents
 
-1. [Architectural Overview](#architectural-overview)
-2. [Technology Stack](#technology-stack)
-3. [Database Schema & Geospatial Layer](#database-schema--geospatial-layer)
-4. [Asynchronous Processing & Task Queue](#asynchronous-processing--task-queue)
-5. [Predictive Yield Modeling Engine](#predictive-yield-modeling-engine)
-6. [Security & Authentication](#security--authentication)
-7. [Integration & Sync Gateway](#integration--sync-gateway)
-8. [Observability & Reliability](#observability--reliability)
-9. [Deployment & Infrastructure](#deployment--infrastructure)
-
----
-
-## 🏛️ Architectural Overview
-
-The FarmerHub Core backend is designed as a high-performance, asynchronous REST API using a **Micro-Service Ready Monolith** approach. It prioritizes data integrity for offline-sync operations and provides the heavy-lifting computational power for yield forecasting.
-
-### Key Architectural Pillars
-
-- **Async-First**: Utilizing Python's `asyncio` for non-blocking I/O operations.
-- **Geospatial Intelligence**: Native support for farm boundary polygons and spatial queries.
-- **Decoupled Processing**: Offloading intensive ML and notification tasks to background workers.
-- **Auditability**: Complete ledger of all field data changes for export compliance.
+1. [Technology Stack](#technology-stack)
+2. [The Intelligence Engine (Predictive Pipeline)](#the-intelligence-engine-predictive-pipeline)
+3. [Regulatory Integration Layer (TAP API)](#regulatory-integration-layer-tap-api)
+4. [Modular Compliance Engine](#modular-compliance-engine)
+5. [Database Schema: Legal & Geospatial Entities](#database-schema-legal--geospatial-entities)
+6. [Asynchronous Task Management](#asynchronous-task-management)
+7. [Observability & SLA](#observability--sla)
 
 ---
 
 ## 💻 Technology Stack
 
-| Component | Technology | Rationale |
-|-----------|------------|-----------|
-| **Framework** | FastAPI | High performance, automatic OpenAPI docs, native async. |
-| **Language** | Python 3.12+ | Industry standard for ML and data science. |
-| **Database** | PostgreSQL 16 | Robust relational data integrity. |
-| **Spatial Ext.** | PostGIS | Essential for mapping and boundary calculations. |
-| **ORM** | SQLAlchemy 2.0 | Modern, type-safe mapping with async support. |
-| **Task Queue** | Celery | Reliable distributed task processing. |
-| **Message Broker** | Redis 7 | High-speed message passing and caching. |
-| **Containerization** | Docker | Environment parity across dev and production. |
+| Component | Technology | Role |
+|:---|:---|:---|
+| **Framework** | FastAPI (Python 3.12+) | High-performance, async API gateway. |
+| **Spatial DB** | PostgreSQL 16 + PostGIS | Polygon storage & deforestation cross-referencing. |
+| **Task Queue** | Celery + Redis 7 | Heavy-lifting ML inference & DDS generation. |
+| **ML Models** | Seq2Seq-LSTM / Random Forest | Yield modeling & anomaly detection. |
+| **GIS Data** | Sentinel-2 / PlanetScope | Real-time canopy & deforestation monitoring. |
 
 ---
 
-## 🗺️ Database Schema & Geospatial Layer
+## 🧠 The Intelligence Engine (Predictive Pipeline)
 
-The database utilizes **PostGIS** to store and query complex farm boundaries (`POLYGON`) and point locations.
+To solve the **Mixed Pixel Challenge**, the backend implements a tiered prediction pipeline:
+
+1.  **Signal Ingestion**: Ingest Sentinel-2 red-edge vegetation indices.
+2.  **Noise Filtering**: Apply the **Canopy-Decoupling Coefficient** $\Psi(k, \sigma)$ based on crop layout data (CBI vs Monocrop).
+3.  **Inference**: Run localized ensemble regression to project harvest volumes.
+4.  **Anomaly Detection**: Flag acreages that deviate significantly from historical yields for on-site audit.
+
+---
+
+## 🔌 Regulatory Integration Layer (TAP API)
+
+FarmerHub UG is engineered to interface directly with the **National Information Technology Authority (NITA-U)**.
+
+*   **Endpoint**: `POST /external/ucda/sync`
+*   **Data Package**: Standardized JSON containing encrypted farmer PII and plot polygon coordinates.
+*   **Return**: Government-authorized `FARM_ID` used for legally recognized export.
+
+---
+
+## ⚖️ Modular Compliance Engine
+
+The backend decouples business logic from regulatory reporting templates. This allows us to update **EUDR DDS formats**, **Carbon Accounting standards**, or **Ugandan National Coffee Act** requirements without rewriting core code.
+
+---
+
+## 🗺️ Database Schema: Legal & Geospatial Entities
 
 ### Core Entities
-
-1.  **Users & Identities**: RBAC-enabled user management.
-2.  **Organizations (Cooperatives/Exporters)**: Tenant isolation for institutional data.
-3.  **Plots (Geospatial)**: Farm boundaries with soil and slope attributes.
-4.  **Field Records**: Temporal data of crop cycles, inputs, and labor.
-5.  **Batches**: Aggregated harvest lots for traceability.
-6.  **Audit Logs**: Immutable record of all data modifications.
-
-### Geospatial Query Examples
-
--   Find all plots within a specific cooperative boundary.
--   Calculate total acreage of maize within a 50km radius.
--   Verify that a specific harvest batch originated from non-deforested coordinates (EUDR compliance).
+*   **Plots (Geospatial)**: Boundary polygons with attributes for soil, slope, and **crop layout type**.
+*   **Legal Docs**: Digital vault for **Customary Land Tenure certs**, communal consent papers, and lease agreements.
+*   **Audit Trail**: Immutable ledger of child labor prevention statements and wage compliance logs.
+*   **Sync Ledger**: Idempotent keys for multi-device field mapping synchronization.
 
 ---
 
-## ⚙️ Asynchronous Processing & Task Queue
+## ⚙️ Asynchronous Task Management
 
-Using **Celery** with **Redis**, the backend handles time-intensive operations without blocking user requests:
-
--   **Background Sync**: Processing incoming batches of offline data from mobile devices.
--   **Yield Forecasting**: Running the ensemble regression models when new seasonal data arrives.
--   **Report Generation**: Compiling complex PDF export documentation.
--   **Third-party Integrations**: Syncing with weather APIs and market price feeds.
+Using **Celery** with **Redis**, the backend offloads:
+*   **DDS Generation**: Instant compilation of complex, multi-plot Due Diligence Statements in XML/JSON.
+*   **Deforestation Risk Alerts**: Real-time monitoring of satellite feeds against mapped supply chain boundaries.
+*   **Bulk Sync Processing**: Handling incoming field data from 100+ agents simultaneously.
 
 ---
 
-## 🧠 Predictive Yield Modeling Engine
+## 📊 Observability & SLA
 
-The "Intelligent" in Agri-Intelligence is driven by an ensemble regression architecture.
-
-### The Algorithm
-The core engine calculates volume forecasts weeks before harvest:
-
-$$Y_{pred} = \sum (A_i \times \eta_i \times \Omega_m)$$
-
-Where:
--   **$Y_{pred}$**: Predicted crop volume.
--   **$A_i$**: Mapped physical acreage of plot $i$.
--   **$\eta_i$**: Plant density index (recorded during field capture).
--   **$\Omega_m$**: Dynamic environmental coefficient (computed from satellite canopy indices and local weather).
-
-### Implementation Pipeline
-1.  **Data Ingestion**: Cleanse and normalize incoming field metrics.
-2.  **Feature Engineering**: Integrate external weather and satellite data.
-3.  **Model Inference**: Run data through localized regression models.
-4.  **Validation**: Compare against historical yields to refine coefficients.
-
----
-
-## 🛡️ Security & Authentication
-
--   **OAuth2 / JWT**: Stateless authentication for mobile and web clients.
--   **RBAC (Role-Based Access Control)**: Granular permissions (e.g., `FieldAgent` vs `CoopManager`).
--   **Data Encryption**: AES-256 for sensitive field data at rest; TLS 1.3 in transit.
--   **Rate Limiting**: Protection against DDoS and API abuse via Redis.
-
----
-
-## 🔄 Integration & Sync Gateway
-
-The backend acts as the source of truth for the **Synchronization Gateway**:
-
-1.  **Idempotency**: All sync operations use idempotent keys to prevent duplicate records.
-2.  **Conflict Resolution**: Server-side logic to handle multi-device updates on the same plot.
-3.  **Delta Sync**: Mobile devices only receive changes since their last successful sync to save data costs.
-
----
-
-## 📊 Observability & Reliability
-
-To maintain a 99.9% SLA, the backend implements a tiered monitoring and recovery strategy.
-
-### 1. Monitoring & Tracing
-*   **Structured Logging**: All logs are emitted in JSON format for ingestion by ELK/Loki.
-*   **APM (Application Performance Monitoring)**: **Sentry** is used for real-time error tracking and performance profiling.
-*   **Metrics**: **Prometheus** scrapes system-level (CPU/RAM) and application-level (Request Count, P99 Latency) metrics, visualized in **Grafana**.
-
-### 2. Reliability Patterns
-*   **Circuit Breakers**: Used when calling external weather or satellite APIs to prevent cascading failures.
-*   **Rate Limiting**: Leaky bucket algorithm implemented at the gateway level to prevent API abuse.
-*   **Dead Letter Queues (DLQ)**: Failed Celery tasks are moved to a DLQ for manual inspection and replay.
-
-### 3. Data Durability
-*   **Point-in-Time Recovery (PITR)**: Enabled for PostgreSQL to allow restoration to any second within the last 30 days.
-*   **Redundant Broker**: Redis is configured in a Cluster mode to ensure no task is lost during a node failure.
-
----
-
-## 🚢 Deployment & Infrastructure
-
--   **Cloud Provider**: AWS or Azure (Regional clusters in East Africa where available).
--   **Orchestration**: Docker Compose for MVP; Kubernetes for Phase 3 scaling.
--   **CI/CD**: GitHub Actions for automated testing and deployment.
--   **Monitoring**: Prometheus and Grafana for system metrics; Sentry for error tracking.
+*   **Uptime Target**: 99.9% for export-critical DDS generation.
+*   **Data Durability**: Point-in-Time Recovery (PITR) for PostgreSQL.
+*   **Performance Monitoring**: Sentry for error tracking and Prometheus for P99 latency monitoring.
 
 ---
 

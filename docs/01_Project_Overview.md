@@ -1,87 +1,47 @@
 # 01 Project Overview
 
-**FarmerHub UG: B2B Agri-Intelligence Platform for East African Agriculture**
+**FarmerHub UG: AI-Powered Agri-RegTech Platform for Global Trade Compliance**
 
-> 📖 Strategic overview of the FarmerHub UG project, its vision, target users, core capabilities, and positioning in the agricultural technology market.
+> 📖 Strategic overview of the FarmerHub UG project, its vision, target users, and its positioning as a mandatory compliance utility for East African agricultural export corridors.
 
-**Last Updated**: May 2026 | **Status**: ✅ MVP Phase | **Audience**: Stakeholders, Developers, Contributors
+**Last Updated**: May 2026 | **Status**: ✅ MVP Phase | **Audience**: Stakeholders, Investors, Global Trade Partners
 
 ---
 
 ## 📋 Table of Contents
 
-1. [Project Vision](#project-vision)
-2. [Problem Statement](#problem-statement)
-3. [Solution Overview](#solution-overview)
-4. [Target Users & Segments](#target-users--segments)
+1. [Project Vision & Mission](#project-vision--mission)
+2. [The Existential Challenge: EUDR Compliance](#the-existential-challenge-eudr-compliance)
+3. [The Solution: Agri-RegTech Synergy](#the-solution-agri-regtech-synergy)
+4. [Target Personas & Mediated Capture](#target-personas--mediated-capture)
 5. [Core Capabilities](#core-capabilities)
-6. [Key Differentiators](#key-differentiators)
+6. [Key Differentiators & The "Traceability Moat"](#key-differentiators--the-traceability-moat)
 7. [Technology Positioning](#technology-positioning)
-8. [Market Opportunity](#market-opportunity)
-9. [Go-to-Market Strategy](#go-to-market-strategy)
-10. [Success Metrics](#success-metrics)
-11. [Development Roadmap](#development-roadmap)
-12. [Organization](#organization)
+8. [Market Opportunity & Horizons](#market-opportunity--horizons)
+9. [Risk & Mitigation Ledger](#risk--mitigation-ledger)
+10. [Strategic KPIs](#strategic-kpis)
 
 ---
 
-## 🎯 Project Vision
+## 🎯 Project Vision & Mission
 
 ### Mission Statement
-
-**Transform agricultural supply chains in East Africa through offline-first intelligence, enabling cooperatives, exporters, and lenders to make data-driven decisions while serving smallholder farmers.**
+**To secure the market access of East African smallholder farmers by providing exporters and cooperatives with an automated, AI-driven compliance engine that eliminates deforestation and labor risks in the supply chain.**
 
 ### Vision Statement
-
-Create a world where every farmer, cooperative, and agribusiness in Uganda and East Africa has access to enterprise-grade agricultural intelligence tools, regardless of connectivity.
-
-### Core Values
-
-- 🌾 **Farmer-First** — Solutions designed with smallholder farmers' needs foremost
-- 📊 **Data-Driven** — Decisions backed by accurate, traceable agricultural data
-- 🌐 **Accessible** — Technology works without internet, for everyone
-- 🤝 **Collaborative** — Ecosystems connecting farmers, cooperatives, buyers, and lenders
-- 🔒 **Trustworthy** — Transparent, secure, and ethical data practices
+To become the definitive **B2B2C Trust Infrastructure** for global tropical commodity trade, transforming fragmented rural data into verifiable, investment-ready digital assets.
 
 ---
 
-## 🔍 Problem Statement
+## 🔍 The Existential Challenge: EUDR Compliance
 
-### Challenges in East African Agriculture
+Uganda's agricultural sector (24% of GDP) faces a critical survival risk due to the **European Union Deforestation Regulation (EUDR)**. With over 60% of coffee exports destined for the EU, the failure to provide precise geolocation data and Due Diligence Statements (DDS) will result in total market exclusion.
 
-1. **Data Fragmentation**
-   - Farmers keep records on paper or memory
-   - Cooperatives lose track of member details
-   - Exporters cannot verify crop provenance
-   - Lenders assess risk without field-level data
+### Regulatory Deadlines
+*   **Large/Medium Operators**: Full compliance by **December 30, 2026**.
+*   **Micro/Small Operators**: Simplified reporting by **June 30, 2027**.
 
-2. **Connectivity Constraints**
-   - 30-40% of rural areas lack consistent internet
-   - Mobile data costs prohibitive for smallholders
-   - Weather/terrain disrupts connectivity
-   - Systems fail without internet, making them unusable
-
-3. **Inefficient Processes**
-   - Manual data entry (paper → digital) takes weeks
-   - Yield forecasting based on guesswork, not data
-   - Export documentation requires visits to multiple offices
-   - Post-harvest losses due to poor tracking
-
-4. **Lack of Traceability**
-   - Buyers don't know crop origin or practices
-   - No way to verify "organic" or "fair trade" claims
-   - Contaminated batches cannot be traced
-   - Exporters struggle with compliance documentation
-
-### Impact on Stakeholders
-
-| Stakeholder | Problem | Impact |
-|-------------|---------|--------|
-| **Smallholder Farmers** | No data to assess their own practices | Miss opportunities to improve yields |
-| **Cooperatives** | Cannot aggregate member data | Limited negotiating power with buyers |
-| **Processors** | Unknown crop source, uncertain quality | Quality control failures, buyer complaints |
-| **Exporters** | Cannot provide traceability docs | Miss high-value export markets |
-| **Lenders** | No way to assess agricultural risk | Miss lending opportunities or fund risky ventures |
+FarmerHub UG addresses the administrative overhead of managing thousands of smallholders by automating the capture of boundary polygons and land-use history.
 
 ---
 
@@ -91,7 +51,7 @@ Create a world where every farmer, cooperative, and agribusiness in Uganda and E
 
 FarmerHub UG is an offline-first, B2B agri-intelligence platform comprising:
 
-1. **Flutter Mobile Application** — Enabling farmers to record plot data (crop type, area, inputs) with robust offline functionality.
+1. **Flutter Mobile Application** — Enabling field agents to record plot data (crop type, area, inputs) with robust offline functionality.
 2. **FastAPI Backend Intelligence Layer** — AI-powered predictions based on historical patterns, batch traceability, and cooperative aggregation.
 3. **Synchronized Ecosystem** — Seamless data flow between the rural field and centralized intelligence.
 
@@ -146,10 +106,10 @@ As an enterprise-grade platform, we maintain a formal ledger of strategic risks.
 
 | Risk Category | Hazard Description | Probability | Impact | Mitigation Strategy |
 |:---|:---|:---:|:---:|:---|
-| **Adoption** | Low literacy among smallholder farmers hinders direct app use. | High | High | Focus on **Mediated Capture**: Field Agents and Coop Managers use the app *on behalf* of farmers. |
-| **Technical** | Sync conflicts when multiple agents edit the same plot data. | Med | Med | Implementation of **Causal Ordering** and **Idempotency Keys** in the Sync Gateway. |
-| **Regulatory** | Sudden changes in EUDR or regional data privacy laws (e.g., Uganda Data Protection Act). | Med | High | **Modular Compliance Engine**: Decouple business logic from reporting templates for rapid updates. |
-| **Connectivity** | Complete lack of hardware (smartphones) in specific rural corridors. | High | Med | **Device Financing Partnerships**: Bundling software with affordable hardware through NGO partners. |
+| **Mixed Pixel Noise** | High residual error in CBI yield models. | High | Med | Implementation of the **Canopy-Decoupling Coefficient** $\Psi(k, \sigma)$. |
+| **Adoption** | Low literacy among smallholder farmers hinders direct app use. | High | High | Focus on **Mediated Capture**: Field Agents use the app *on behalf* of farmers. |
+| **Regulatory** | Sudden changes in EUDR or regional data privacy laws. | Med | High | **Modular Compliance Engine**: Decouple business logic from reporting templates. |
+| **Connectivity** | Complete lack of hardware in specific rural corridors. | High | Med | **Device Financing Partnerships**: Bundling software with affordable hardware. |
 
 ---
 

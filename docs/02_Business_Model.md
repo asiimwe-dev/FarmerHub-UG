@@ -1,485 +1,100 @@
 # 02 Business Model
 
-**Revenue Strategy, Pricing, and Unit Economics for FarmerHub UG**
+**Institutional B2B SaaS & Agri-RegTech Revenue Strategy**
 
-> 💰 Complete business model framework including revenue streams, pricing strategy, customer segments, and financial projections.
+> 💰 Strategic framework defining FarmerHub UG's revenue streams, institutional positioning, and unit economics designed for the East African agricultural corridor.
 
-**Last Updated**: May 2026 | **Status**: ✅ Framework | **Audience**: Investors, Stakeholders, Business Team
+**Last Updated**: May 2026 | **Status**: ✅ Active | **Audience**: Investors, Stakeholders, Business Development
 
 ---
 
 ## 📋 Table of Contents
 
 1. [Executive Summary](#executive-summary)
-2. [Revenue Model](#revenue-model)
-3. [Customer Segments & Pricing](#customer-segments--pricing)
-4. [Value Proposition](#value-proposition-by-segment)
-5. [Institutional Positioning](#institutional-positioning)
-6. [Unit Economics](#unit-economics)
-7. [Go-to-Market Strategy](#go-to-market-strategy)
-8. [Financial Projections](#financial-projections)
-9. [Competitive Positioning](#competitive-positioning)
-10. [Key Assumptions](#key-assumptions)
-11. [Risk Mitigation](#risk-mitigation)
+2. [The Economic Driver: Asymmetric Risk](#the-economic-driver-asymmetric-risk)
+3. [Revenue Model & Tiers](#revenue-model--tiers)
+4. [Institutional Positioning](#institutional-positioning)
+5. [Unit Economics](#unit-economics)
+6. [Anchor Client Strategy](#anchor-client-strategy)
+7. [Financial Projections](#financial-projections)
+8. [Competitive Landscape](#competitive-landscape)
 
 ---
 
 ## 📌 Executive Summary
 
-### Business Model Overview
-
-FarmerHub UG uses a **multi-segment SaaS model** with:
-- **Primary Revenue**: Subscription fees from cooperatives, processors, exporters
-- **Secondary Revenue**: Data analytics, compliance services, integrations
-- **Target Market**: Agricultural institutions and value chains in Uganda & East Africa
-
-### Key Metrics (5-Year Target)
-
-| Metric | Year 1 | Year 3 | Year 5 |
-|--------|--------|--------|--------|
-| **Monthly Active Users** | 500 | 15,000 | 100,000+ |
-| **Institutions** | 5 | 50 | 200+ |
-| **Annual Revenue** | $50K | $2.5M | $10M+ |
-| **Gross Margin** | 60% | 75% | 80%+ |
+FarmerHub UG operates as a **B2B Enterprise SaaS** platform. We recognize that smallholder farmers (the primary data providers) are highly price-sensitive and cannot bear the cost of compliance software. Therefore, our model targets **downstream beneficiaries**—exporters, processors, and multinational brands—who face severe regulatory penalties (EUDR) and supply chain disruption.
 
 ---
 
-## 💶 Revenue Model
+## 🌍 The Economic Driver: Asymmetric Risk
 
-### Four Revenue Streams
-
-#### 1. **Subscription Fees** (60% of revenue)
-
-**Model**: Tiered pricing based on institution size and features
-
-- **Cooperative Plans**
-  - Starter: $100/month (≤100 members)
-  - Growth: $300/month (100-500 members)
-  - Enterprise: Custom pricing (500+ members)
-
-- **Exporter Plans**
-  - Standard: $500/month (basic traceability)
-  - Professional: $1,500/month (compliance docs, analytics)
-  - Enterprise: Custom (integration, SLA)
-
-- **Processor Plans**
-  - Standard: $300/month (lot tracking, quality)
-  - Premium: $800/month (supply chain integration)
-
-- **Lender Plans**
-  - Risk Assessment: $200/month (farmer-level risk scoring)
-  - Portfolio Management: $800/month (full platform)
-
-#### 2. **Compliance & Certification** (20% of revenue)
-
-- **Export Documentation**: $50-100 per batch certified
-- **Organic Certification Support**: $200 per cooperative/season
-- **Fair Trade Verification**: $150 per cooperative/season
-- **Quality Auditing**: $500 per processor/quarter
-
-#### 3. **Data & Analytics** (15% of revenue)
-
-- **Market Intelligence Reports**: $2,000-5,000 per year
-- **Regional Trend Analysis**: $1,000/month subscription
-- **Custom Dashboards**: $100-500 one-time setup
-- **Data Export Services**: $100-1,000 per export
-
-#### 4. **Integrations & Services** (5% of revenue)
-
-- **API Access**: $200/month tier
-- **Custom Integration Development**: $500-2,000 per integration
-- **Training & Support Packages**: $500-2,000 per session
-- **Deployment & Maintenance**: $1,000/month for white-label instances
+| Value Chain Actor | Role | Risk of Non-Compliance | Willingness to Pay (WTP) |
+|:---|:---|:---|:---|
+| **Smallholder Farmer** | Producer | Total market exclusion. | **Negligible** (< $2/month). |
+| **Cooperative** | Aggregator | Operational inefficiency; loss of buyer trust. | **Low** (Performance-linked). |
+| **Exporter** | Shipper | Shipment rejection at EU ports; legal liability. | **High** ($5k–$25k/year). |
+| **Global Brand** | Off-taker | Severe ESG penalties; brand damage. | **Extremely High** ($18k–$42k+/year). |
 
 ---
 
-## 👥 Customer Segments & Pricing
+## 💶 Revenue Model & Tiers
 
-### Segment 1: Cooperatives
+### 1. Subscription Fees (60% of Revenue)
+*   **Growth (Mid-Size Exporters)**: $500–$1,500/month. Includes automated DDS generation and plot mapping for up to 5,000 farmers.
+*   **Enterprise (Multinationals)**: $2,500–$5,000+/month. Includes carbon accounting, deforestation risk alerts, and custom API integration with the National DWH.
 
-**Customer Profile**
-- 50-500 member farmers
-- Need cooperative-level data aggregation
-- Monthly budget: $100-500
+### 2. Transactional & Compliance Fees (25% of Revenue)
+*   **Verification Fee**: $0.50–$1.00 per verified compliant batch.
+*   **DDS Export Fee**: Flat fee per mandatory Due Diligence Statement generated for EU customs.
 
-**Pricing Strategy**
-- Starter: $100/month (≤100 members, basic field capture)
-- Growth: $300/month (100-500 members, forecasting, group yield)
-- Enterprise: Custom (500+ members, advanced features, support)
-
-**Value Delivered**
-- ✅ Aggregate member data for group negotiations (+15-20% prices)
-- ✅ Generate export documentation (+$5-10K per cooperative)
-- ✅ Verify practices for certification (+$1-3K value)
-
-**Acquisition**
-- Partner with agricultural development organizations
-- Co-design with 3-5 pilot cooperatives
-- Word-of-mouth and peer recommendations
-
-### Segment 2: Exporters
-
-**Customer Profile**
-- Coffee, cocoa, tea exporters
-- Target EU/specialty markets
-- Monthly budget: $500-5,000
-
-**Pricing Strategy**
-- Standard: $500/month (traceability, documentation)
-- Professional: $1,500/month (compliance, advanced analytics)
-- Enterprise: Custom pricing (SLA, integrations)
-
-**Value Delivered**
-- ✅ Meet EU traceability requirements (unlocks 30-50% price premium)
-- ✅ Reduce quality issues (2-5% cost savings)
-- ✅ Speed up export documentation (1-2 weeks time savings)
-
-**Acquisition**
-- Direct sales to export associations
-- Trade shows and agricultural forums
-- Referrals from logistics partners
-
-### Segment 3: Processors
-
-**Customer Profile**
-- Coffee drying stations, cocoa fermentaries
-- Process crops from multiple farmers
-- Monthly budget: $300-1,000
-
-**Pricing Strategy**
-- Standard: $300/month (lot tracking, basic quality)
-- Premium: $800/month (supply chain, advanced traceability)
-
-**Value Delivered**
-- ✅ Track quality metrics through processing
-- ✅ Trace contamination to source farmer
-- ✅ Maintain audit trails for compliance
-
-**Acquisition**
-- Target processor associations
-- Integration with exporter partnerships
-- Joint go-to-market with exporters
-
-### Segment 4: Lenders
-
-**Customer Profile**
-- Microfinance institutions, agricultural banks
-- Assess and monitor farm-level risk
-- Monthly budget: $200-1,000
-
-**Pricing Strategy**
-- Risk Assessment: $200/month (farmer risk scoring)
-- Portfolio: $800/month (full platform, monitoring)
-
-**Value Delivered**
-- ✅ Better risk assessment (30-50% fewer defaults)
-- ✅ Monitor crop progress in real-time
-- ✅ Verify loan use (reduce misappropriation)
-
-**Acquisition**
-- Partnership with microfinance networks
-- Co-marketing with agricultural development orgs
-- Direct sales to bank agriculture departments
+### 3. Data Intelligence & Advisory (15% of Revenue)
+*   **Predictive Yield Analytics**: Premium access to exact volume forecasts weeks before harvest.
+*   **ESG Reporting**: Aggregated regional impact reports for institutional lenders and development banks.
 
 ---
 
-## 💡 Value Proposition by Segment
+## 🏛️ Institutional Positioning: "Trust Infrastructure"
 
-### Cooperatives
+FarmerHub UG is positioned as the **"Single Source of Truth"** in the fragmented East African market.
 
-| Problem | Before FarmerHub UG | After FarmerHub UG |
-|---------|--------|---------|
-| **Data Fragmentation** | Paper records, 40% loss | Digital records, 100% capture |
-| **Negotiating Power** | No data on production | Aggregate yields by crop/member |
-| **Export Docs** | Manual compilation (3 weeks) | Auto-generated (1 day) |
-| **Market Price** | Accept buyer's price | Know cooperative average yield |
-
-**ROI**: Average price increase of 12-18% = $5-15K extra revenue per cooperative/season
-
-### Exporters
-
-| Problem | Before FarmerHub UG | After FarmerHub UG |
-|---------|--------|---------|
-| **Compliance** | Cannot provide traceability | Full audit trail available |
-| **Quality Issues** | Unknown source, lose 5-8% | Trace to specific farmer |
-| **Time to Export** | 2-3 weeks documentation | 2-3 days documentation |
-| **Premium Markets** | Cannot access EU buyers | Unlock 30-50% price premium |
-
-**ROI**: 10% price premium on EU sales = $50-100K per season for mid-size exporter
-
-### Processors
-
-| Problem | Before FarmerHub UG | After FarmerHub UG |
-|---------|--------|---------|
-| **Quality Assurance** | No lot traceability | Track quality metrics per lot |
-| **Contamination** | Entire batch lost | Isolate affected lots only |
-| **Buyer Trust** | Cannot verify practices | Provide quality certificates |
-
-**ROI**: 2-5% cost savings from reduced waste = $10-30K per season
-
-### Lenders
-
-| Problem | Before FarmerHub UG | After FarmerHub UG |
-|---------|--------|---------|
-| **Risk Assessment** | Based on guesswork | Historical yield and input data |
-| **Default Rates** | 8-12% default rate | 3-5% default rate (40% reduction) |
-| **Loan Monitoring** | Cannot track use | Real-time crop progress monitoring |
-
-**ROI**: Reduce 100K portfolio from 10% to 5% defaults = $50K savings on 1000 farmer portfolio
+*   **The Traceability Moat**: As EUDR deadlines (Dec 2026) approach, FarmerHub UG becomes a **mandatory utility**. Our integration with the National Coffee DWH (as an authorized TAP) creates a high barrier to entry.
+*   **Farmer Data Sovereignty**: We differentiate by ensuring data portability. Cooperatives "own" their data, preventing buyer lock-in and fostering an ecosystem of trust.
 
 ---
 
-## 🏛️ Institutional Positioning
+## 📊 Unit Economics (Projections)
 
-FarmerHub Core is not just a tool; it is a **B2B2C Trust Infrastructure**.
-
-### 1. The "Single Source of Truth"
-In the fragmented East African market, we position ourselves as the definitive source for field-level data. By providing a common data standard, we enable disparate entities (e.g., a Cooperative in Mbale and a Bank in Kampala) to collaborate with zero data friction.
-
-### 2. Market Defensibility: The "Traceability Moat"
-As global regulations like EUDR tighten, the cost of *not* having FarmerHub UG increases. We are positioning the platform as a **mandatory compliance utility** for any exporter selling into high-value Western markets.
-
-### 3. Data Philanthropy vs. Data Sovereignty
-Unlike generic data collectors, we champion **Farmer Data Sovereignty**. We provide institutions with the analytics they need while ensuring that the underlying data remains a valuable asset for the farmer and their cooperative.
+### Per-Exporter Customer
+*   **Annual Contract Value (ACV)**: $12,000 (Average).
+*   **Customer Acquisition Cost (CAC)**: $2,000.
+*   **Payback Period**: 2 months.
+*   **LTV (5-Year)**: $60,000+.
 
 ---
 
-## 📊 Unit Economics
+## 🎯 Anchor Client Strategy
 
-### Per-Customer Analysis (Year 1)
-
-#### Cooperative Customer
-```
-Monthly Subscription: $200 (average)
-Annual Revenue: $2,400
-Compliance/Certification: $1,000
-Total Annual Revenue: $3,400
-
-Customer Acquisition Cost: $500
-Payback Period: 2 months
-
-Net Year 1 Value: $3,400 - $500 = $2,900
-```
-
-#### Exporter Customer
-```
-Monthly Subscription: $1,000 (average)
-Annual Revenue: $12,000
-Analytics & Data: $2,000
-Total Annual Revenue: $14,000
-
-Customer Acquisition Cost: $2,000
-Payback Period: 1.7 months
-
-Net Year 1 Value: $14,000 - $2,000 = $12,000
-```
-
-### Gross Margin Analysis
-
-```
-Revenue Streams:
-- Subscriptions: 60% (high margin)
-- Compliance: 20% (high margin)
-- Analytics: 15% (high margin)
-- Services: 5% (lower margin)
-
-Cost Structure (% of revenue):
-- Cloud infrastructure: 10%
-- Support & operations: 15%
-- Payment processing: 3%
-- Partner revenue share: 5% (optional)
-
-Gross Margin: 67% year 1, 75%+ by year 3
-```
-
----
-
-## 🎯 Go-to-Market Strategy
-
-### Phase 1: Cooperative Focus (Months 1-6)
-
-**Goal**: Establish proof of concept and success metrics
-
-- Identify 3-5 pilot cooperatives in Uganda
-- Offer free/subsidized access for co-design
-- Develop use-case documentation and ROI metrics
-- Train staff and document best practices
-
-**Budget**: $10-20K (travel, training, documentation)
-
-### Phase 2: Scale Cooperatives (Months 7-12)
-
-**Goal**: Establish cooperative as primary channel
-
-- Launch referral program ($500-1K per successful referral)
-- Partner with cooperative federations
-- Release case studies showing ROI
-- Market at agricultural conferences
-
-**Target**: 5-10 paid cooperatives by end of year
-
-### Phase 3: Add Exporter Channel (Year 2)
-
-**Goal**: Expand to higher-value segments
-
-- Identify exporters selling to premium markets
-- Emphasize EU compliance and price premium
-- Co-market with logistics partners
-- Attend export trade shows
-
-**Target**: 10-15 exporter customers
-
-### Phase 4: Ecosystem Integration (Year 3+)
-
-**Goal**: Become central platform for agricultural value chains
-
-- Integrate with market price services
-- Connect to logistics providers
-- Enable lender integrations
-- Build ecosystem of partners
+We focus on securing **Global Multinational Off-takers** (e.g., Cargill, Nestle) as anchor clients. These entities mandate compliance down their supply chains, effectively subsidizing the onboarding of cooperatives and field teams onto the FarmerHub UG ecosystem.
 
 ---
 
 ## 📈 Financial Projections
 
-### 5-Year Revenue Projections
-
-```
-Year 1: $50K
-- 5 cooperatives × $3.4K = $17K
-- 2 exporters × $12K = $24K
-- 1 processor × $5K = $5K
-- Others = $4K
-
-Year 2: $400K
-- 30 cooperatives × $3.4K = $102K
-- 15 exporters × $12K = $180K
-- 10 processors × $5K = $50K
-- 5 lenders × $4K = $20K
-- Data/integration revenue = $48K
-
-Year 3: $2.5M
-- 100 cooperatives = $340K
-- 50 exporters = $600K
-- 40 processors = $200K
-- 20 lenders = $80K
-- Data/analytics = $500K
-- Compliance/integration = $280K
-
-Year 4: $5M
-- Scale to 200+ institutions
-- 3x ARR growth
-
-Year 5: $10M+
-- Regional scale across East Africa
-- Market leadership position
-```
-
-### Cost Structure
-
-| Category | Year 1 | Year 3 | Year 5 |
-|----------|--------|--------|--------|
-| **Development** | 40% | 25% | 15% |
-| **Operations** | 25% | 20% | 15% |
-| **Sales & Marketing** | 25% | 30% | 35% |
-| **Infrastructure** | 10% | 10% | 10% |
-| **Gross Margin** | 60% | 75% | 80%+ |
+*   **Year 1 (Uganda Focus)**: $50K ARR (Pilot phase).
+*   **Year 2 (EUDR Deadline)**: $400K ARR (Rapid scaling in coffee/cocoa).
+*   **Year 3 (Regional Expansion)**: $2.5M ARR (Expansion to EAC & West Africa).
 
 ---
 
-## 🏆 Competitive Positioning
+## 🏆 Competitive Landscape
 
-### vs. Generic Data Collection (Commcare, Magpi)
-
-| Feature | Generic | FarmerHub UG |
-|---------|---------|---------|
-| **Offline-First** | ✓ | ✓✓✓ |
-| **Agri-Specific** | ✗ | ✓✓✓ |
-| **Traceability** | ✗ | ✓✓✓ |
-| **Forecasting** | ✗ | ✓ |
-| **Multi-Stakeholder** | ✗ | ✓ |
-
-### vs. Agri-Tech Platforms (DigiFarm, Apollo, Farmcrowdy)
-
-| Feature | Competitors | FarmerHub UG |
-|---------|-------------|---------|
-| **Offline-First** | ✗ (requires internet) | ✓✓✓ |
-| **Export Traceability** | ✗ | ✓✓✓ |
-| **Cooperative Focus** | ✗ | ✓ |
-| **Cost** | $1-3/month/farmer | $100/month/cooperative |
-| **Market** | Individual farmers | Value chains |
-
-### Competitive Advantages
-
-1. **Offline-First**: Works where competitors can't
-2. **Traceability**: Meets EU compliance requirements
-3. **Value Chain Integration**: Connects multiple stakeholders
-4. **Affordable for Institutions**: Per-institution pricing vs. per-farmer
-5. **Domain-Specific**: Purpose-built for agriculture
-
----
-
-## 🎯 Key Assumptions
-
-| Assumption | Basis | Risk |
-|-----------|-------|------|
-| **Cooperatives willing to adopt digital tools** | Growing trend in Uganda | Adoption slower than expected |
-| **Exporters value compliance/traceability** | EU requirements + price premium | Market may not value enough |
-| **$200/month sustainable for cooperatives** | ROI of 10-15x | Price too high for some segments |
-| **3-year break-even** | Industry standard for B2B SaaS | Longer sales cycles than expected |
-| **Regional scale by year 3** | Growing agri-tech ecosystem | Political/regulatory barriers |
-
----
-
-## ⚠️ Risk Mitigation
-
-### Market Risks
-
-**Risk**: Slow adoption by target customers
-
-**Mitigation**:
-- Intensive stakeholder engagement before launch
-- Flexible pricing models for early adopters
-- Clear ROI measurement and case studies
-- Free pilot programs to prove value
-
-### Technical Risks
-
-**Risk**: Sync failures or data loss
-
-**Mitigation**:
-- Extensive testing of sync logic
-- Redundant backups and recovery procedures
-- Gradual rollout with monitoring
-- 24/7 support for early customers
-
-### Competition Risks
-
-**Risk**: Well-funded competitors enter market
-
-**Mitigation**:
-- Establish market leadership early (year 1)
-- Build strong customer relationships
-- Develop proprietary traceability algorithms
-- Establish partnerships before competitors
-
-### Regulatory Risks
-
-**Risk**: Data protection regulations limit service
-
-**Mitigation**:
-- Build privacy-by-design from start
-- Work with local authorities on compliance
-- Transparent data use policies
-- Optional data minimization modes
-
----
-
-**✅ Business model validates FarmerHub Core addresses real market needs with sustainable pricing.**
-
-**📊 For technical roadmap, see [10_Product_Roadmap.md](./10_Product_Roadmap.md)**
-
-**🎯 For market overview, see [01_Project_Overview.md](./01_Project_Overview.md)**
+| Platform | Core Focus | Prediction Engine | DWH Integration |
+|:---|:---|:---:|:---:|
+| **FarmerHub UG** | **Agri-RegTech / Compliance** | **Ensemble Regression** | **Authorized TAP** |
+| **EzyAgric** | Marketplace / Credit | Basic Advisory | No |
+| **Koltiva** | Global ESG SaaS | Advanced AI | Ongoing |
+| **TraceX** | Blockchain Traceability | Historical Analytics | No |
 
 ---
 
