@@ -72,7 +72,7 @@ Violations of this code of conduct may result in:
 
 **Report Violations**: Contact project maintainers privately via:
 - GitHub: [@asiimwe-dev](https://github.com/asiimwe-dev)
-- Email: gilbert.asiimwe.dev@gmail.com
+- Email: [Send Email](gilbert.asiimwe.dev@gmail.com)
 - All reports are **confidential** and investigated promptly
 
 ---
@@ -151,12 +151,12 @@ pytest           # All tests should pass
    - Are there related discussions?
 
 2. **Check the Roadmap**
-   - Read [ROADMAP.md](./10_Product_Roadmap.md)
+   - Read [PROJECT ROADMAP](./10_Product_Roadmap.md)
    - Align your work with project priorities
    - Proposed features should match our vision
 
 3. **Review Architecture**
-   - Read [ARCHITECTURE.md](./03_Architecture_Blueprint.md)
+   - Read [PROJECT ARCHITECTURE](./03_Architecture_Blueprint.md)
    - Understand clean architecture principles
    - Know where your code should live
 
