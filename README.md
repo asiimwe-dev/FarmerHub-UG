@@ -5,7 +5,7 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter)](https://flutter.dev)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green?logo=fastapi)](https://fastapi.tiangolo.com)
 [![EUDR-Ready](https://img.shields.io/badge/Compliance-EUDR%20Ready-brightgreen)](./docs/01_Project_Overview.md)
-[![Status](https://img.shields.io/badge/Status-Production--Ready-brightgreen)]()
+[![Status](https://img.shields.io/badge/Status-In--Development-brightgreen)]()
 
 ---
 
