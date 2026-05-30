@@ -72,5 +72,5 @@ We follow strict **Sovereign Data Governance** and **Zero Trust Security** stand
 
 ---
 
-**Made with ❤️ for the agricultural ecosystem of East Africa.**  
+**Ensuring EUDR complaince and Predictive and Data-Rich Farming and Export.**  
 🌾 *Building the future of data-sovereign farming.* 🚀
